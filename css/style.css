@@ -199,9 +199,9 @@ button {
 }
 
 .friends h3 {
-    text-align: center;
+    float: left;
     font-family:'Oswald', sans-serif;
-    font-size: 2.3vw;
+    font-size: 1.7vw;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     margin: 0;
@@ -221,14 +221,17 @@ button {
 
 }
 
-.friends video {
-    width: 100%;
-    margin: 20px auto 0 auto;
+.friends img {
+    float: left;
+    height: 1.7vw;
+    margin: 0.5vw;
+    margin-right: 1.3vw;
 }
 
 #loading {
     background-color: #2a2539;
     border-radius: 10px;
+    margin: auto;
 }
 
 .friend {
