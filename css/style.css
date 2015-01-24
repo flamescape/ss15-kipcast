@@ -1,11 +1,44 @@
+.mainpage {
+    position: fixed;
+    top: 0; right: 0; bottom: 0; left: 0;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+.prompt {
+    width: 50%;
+}
+
+.maininp {
+  width:80%;
+  display: flex;
+  margin: 0 auto;  
+}
+
+.maininp input {
+    flex: 9;
+}
+
 .mainlogo {
-  text-align: center;
-  font-family:'Grand Hotel', cursive;
+    font-size: 8.5vw;
+    text-align: center;
+    font-family:'Grand Hotel', cursive;
+    color: #fcfcee;
+    margin: 0 0 15px 0;
 }
 
 .calltoaction {
-  text-align: center;
-  font-family:'Oswald', sans-serif;
+    text-align: center;
+    font-family:'Oswald', sans-serif;
+    font-size: 2.3vw;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #fcfcee;
+    margin-top: 2vw;
 }
 
 #colorbg {
