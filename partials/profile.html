@@ -1,16 +1,3 @@
-<!-- <div id="main">
-    <header>
-        <h1>Friendly Games</h1>
-        <input type="text" placeholder="{{p.steamId}}" value="{{p.steamId}}"/>
-        <p>X</p>
-    </header>
-    <div id="wrapper">
-        <div ng-include="'partials/friends.html'"></div>
-        <div ng-include="'partials/games.html'"></div>
-    </div>
-</div> -->
-
-
     <div id="main">
         <header>
             <h1>Friendly Games</h1>
@@ -20,7 +7,7 @@
         <div id="wrapper">
             <div id="friends" ng-class="{expanded: fc.isExpanded}" ng-controller="FriendsCtrl as fc" ng-include="'partials/friends.html'"></div>
             <div id="friends-expand">
-                <button>></button>
+                <button ng-click="fc.isExpanded = !fc.isExpanded">></button>
             </div>
             <div  id="games" ng-controller="GamesCtrl as gc" ng-include="'partials/games.html'"></div>
         </div>

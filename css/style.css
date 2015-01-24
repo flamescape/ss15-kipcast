@@ -54,7 +54,7 @@ header h1 {
 #friends {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
     min-width: 400px;
     background-color: rgba(17, 25, 35, 0.5);
 }
@@ -106,11 +106,12 @@ header h1 {
   flex-direction: column;
 }
 
-.friends.expanded {
-    width: 90%;
+#friends.expanded {
+    min-width: 90%;
+    background-color: pink;
 }
 
-.friends.expanded .friend {
+#friends.expanded .friend {
     width: 300px;
     flex: 1;
 }
