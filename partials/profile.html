@@ -14,9 +14,8 @@
     </div>
     
     <div class="games">
-        <div ng-repeat="g in p.games" class="game">
-            <img src="{{g.logo}}" width="184" height="69" class="game"/>
-            <span class="game-name">{{g.name}}</span>
+        <div ng-repeat="g in p.games" class="game" title="{{g.name}}">
+            <img src="{{g.logo}}" width="184" height="69" class="game" alt="{{g.name}} logo" />
         </div>
     </div>
     <div id="colorbg"></div>

@@ -132,6 +132,7 @@
     background-color: #161616;
     width: 25%;
     padding: 5px;
+    float: left;
 }
 
 .friend {
@@ -156,4 +157,57 @@
 
 .offline {
     border: 2px solid #
+}
+
+.games {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    height: 100%;
+    width: 66%;
+    float: left;
+}
+
+.game {
+    flex-grow: 1;
+    width: 184px;
+    height: 69px;
+    margin: 5px;
+    flex-basis: 1;
+}
+
+.game img {
+    border-radius: 8px;
+}
+
+
+@media screen and (max-device-width: 800px) {
+  html { background: url(img/ibbobb.png) #000 no-repeat center center fixed; }
+  #video-bg { display: none; }
+}
+
+@media screen and (max-width: 900px) {
+  .prompt {
+    width: 85%;
+  }
+  
+  .mainlogo {
+    font-size: 15vw;
+  }
+  
+  .calltoaction {
+    font-size: 4vw;
+  }
+  
+  .maininp button {
+    font-size: 3.5vw;
+  }
+}
+
+/* Prevent tbe button icon from growing too big */
+@media screen and (min-width: 1600px) {
+  .maininp button {
+    font-size: 2em;
+  }
+  
 }
