@@ -14,7 +14,7 @@
     
     <div id="colorbg"></div>
     <div id="video-bg" ng-controller="BackgroundCtrl as p">
-        <video autoplay loop src="vids/ibbandobb.mp4">
+        <video autoplay loop ng-attr-poster="{{ p.png }}" ng-src="{{ p.mp4 }}">
         </video>
     </div>
 	
