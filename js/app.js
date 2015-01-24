@@ -39,7 +39,7 @@ angular.module('app', ['ngRoute', 'steam', 'angular-extend-promises'])
         
         p.hideHelp = function() {
             p.helpVisible = false;
-        }
+        };
         
     })
     
