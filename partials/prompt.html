@@ -29,4 +29,11 @@
             <span><i>{{f.online}}</i></span>
         </div>
     </div>
+    
+    <div class="games">
+        <div ng-repeat="g in p.games" class="game">
+            <img src="{{g.logo}}" width="184" height="69" class="game"/>
+            <span class="game-name">{{g.name}}</span>
+        </div>
+    </div>
     <div id="colorbg"></div>
