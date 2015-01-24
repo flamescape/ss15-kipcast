@@ -45,6 +45,9 @@ angular.module('steam', ['yql']).factory('steam', function(yql, $q){
                     profileUrl: div.a.href,
                     online: (div.div[1].p.span.content||'').trim(),
                     avatar: div.div[0].img.src.replace(/.jpg$/, '_full.jpg'),
+                    isIngame: !!div.class.match(/in-game/),
+                    isOnline: !!div.class.match(/online/),
+                    isOffline: !!div.class.match(/offline/),
                     _html: div
                 }
             });
