@@ -1,0 +1,19 @@
+.mainlogo {
+  text-align: center;
+  font-family:'Grand Hotel', cursive;
+}
+
+.calltoaction {
+  text-align: center;
+  font-family:'Oswald', sans-serif;
+}
+
+#colorbg {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0; right: 0; bottom: 0; left: 0;
+  background-image: linear-gradient(to bottom right, #255C69, #AA7139);
+  display: block;
+  z-index: -99;
+}

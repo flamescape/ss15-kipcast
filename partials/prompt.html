@@ -9,16 +9,23 @@
         <li>76561197961662746</li>
         <li>http://steamcommunity.com/profiles/76561198001860563/</li>
     </ul>
-
-    <input style="width: 500px;" type="text" ng-model="p.steamIdInput" ng-keydown="$event.keyCode==13&&p.calcSteamId()" /><button ng-click="p.calcSteamId()">GO!</button>
     
     <br>
     <strong>SteamID64: {{p.steamId}}</strong>
     
     <div ng-if="p.loadingFriends">LOADING FRIENDS ...</div>
     
+    <div class="mainpage">
+        <h1 class="mainlogo">Friendly Games</h1>
+        <input type="text" ng-model="p.steamIdInput" ng-keydown="$event.keyCode==13&&p.calcSteamId()" />
+        <button id="process" ng-click="p.calcSteamId()">➜</button>
+        <p class="calltoaction">Enter your Steam account ID!</p>
+    </div>
+
     <div ng-repeat="f in p.friends">
         <img src="{{f.avatar}}" width="16" height="16" />
         <span>Name: <a ng-href="{{f.profileUrl}}">{{f.name}}</a></span>
         <span><i>Online: {{f.online}}</i></span>
     </div>
+    
+    <div id="colorbg"></div>
