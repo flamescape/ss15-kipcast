@@ -64,20 +64,17 @@ angular.module('app', ['ngRoute', 'steam', 'angular-extend-promises'])
         };
 
         
-        gc.fetchGameTags = function(games){
-            games = games.slice(0, 5);
+        gc.fetchGameInfo = function(games){
             console.log('fetching tags for', games);
             
             $q.when(games).map(function(game){
-                console.log('scraping game', game.appID);
-                return steam.getGameCategories(game.appID).then(function(tags){
-                    game.tags = tags;
+                return steam.getGameInfo(game.appID).then(function(info){
+                    game.info = info;
                 });
-            }, {concurrency:2});
-            
+            }, {concurrency:6});
         };
         
-        gc.updateGames().then(gc.fetchGameTags);
+        gc.updateGames().then(gc.fetchGameInfo);
         
     })
     

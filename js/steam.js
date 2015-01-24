@@ -1,5 +1,7 @@
 angular.module('steam', ['yql', 'jsonp','firebase']).factory('steam', function($q, yql, jsonp,$firebase){
 
+    var fb = new Firebase('https://dazzling-fire-3634.firebaseio.com/');
+
     var steam = {};
     
     var vanityCache = {};
@@ -88,15 +90,6 @@ angular.module('steam', ['yql', 'jsonp','firebase']).factory('steam', function($
             });
         }).catch(function(err){
             console.log('Second fallback failed. Uhoh!', err);
-        }).tap(function(data){
-
-            var ref = new Firebase('https://dazzling-fire-3634.firebaseio.com/');
-            var sync = $firebase(ref.child('profiles').child(steamid));
-            var profileObject = sync.$asObject();
-            profileObject.timeStamp = (new Date()).getTime();
-            profileObject.friends = data;
-            
-            profileObject.$save();
         });
     };
 
@@ -107,7 +100,10 @@ angular.module('steam', ['yql', 'jsonp','firebase']).factory('steam', function($
     }
     
     steam.getGames = function(steamid){
-        return steam.getId64(steamid).then(function(steamid){
+        return steam.getId64(steamid).then(function(){
+            // get cached games list if available
+            return steamid;
+        }).then(function(steamid){
             return yql("select * from xml where url='http://steamcommunity.com/profiles/"+steamid+"/games/?tab=all&xml=1'");
         }).then(function(data){
             console.log('GAMES', data);
@@ -115,11 +111,29 @@ angular.module('steam', ['yql', 'jsonp','firebase']).factory('steam', function($
         });
     };
     
-    steam.getGameCategories = function(appid) {
-        return yql("SELECT * FROM data.html.cssselect WHERE url='http://store.steampowered.com/app/"+appid+"' AND css='#category_block .game_area_details_specs a'").then(function(data){
-            return data.data.query.results.results.a.map(function(a){
-                return a.content;
-            });
+    steam.getGameInfo = function(appid) {
+        var sync = $firebase(fb.child('game').child(appid));
+        var game = sync.$asObject();
+        
+        return game.$loaded().then(function(){
+            if (!game || !game.lastUpdated) {
+                return yql("SELECT * FROM data.html.cssselect WHERE url='http://store.steampowered.com/app/"+appid+"' AND css='#category_block .game_area_details_specs a'").then(function(data){
+                    var cats = data.data.query.results.results.a.map(function(a){
+                        return a.content;
+                    });
+                    
+                    game.lastUpdated = (new Date()).getTime();
+                    game.isMultiplayer = cats.indexOf('Multi-player') >= 0;
+                    game.isCoop = cats.indexOf('Co-op') >= 0;
+                    game.$save();
+                    console.log('CACHE updating', appid, game);
+                    
+                    return game;
+                });
+            }
+            
+            console.log('CACHE hit!');
+            return game;
         });
     };
     
