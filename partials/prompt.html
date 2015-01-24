@@ -24,8 +24,8 @@
 
     <div ng-repeat="f in p.friends">
         <img src="{{f.avatar}}" width="42" height="42" class="online"/>
-        <span>{{f.name}}</span>
-        <span><i>Online: {{f.online}}</i></span>
+        <span class="friend-label">{{f.name}}</span>
+        <span><i>{{f.online}}</i></span>
     </div>
     
     <div id="colorbg"></div>

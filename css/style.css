@@ -18,14 +18,18 @@
   z-index: -99;
 }
 
+
+.friend-name {
+    line-height: 52px;
+}
 .ingame {
-    border: 1px solid #8bb43a;
+    border: 2px solid #8bb43a;
 }
 
 .online {
-    border: 1px solid #519fbe;
+    border: 2px solid #519fbe;
 }
 
 .offline {
-    border: 1px solid #
+    border: 2px solid #
 }
