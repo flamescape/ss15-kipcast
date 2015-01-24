@@ -1,4 +1,4 @@
-angular.module('steam', ['yql', 'jsonp']).factory('steam', function($q, yql, jsonp){
+angular.module('steam', ['yql', 'jsonp','firebase']).factory('steam', function($q, yql, jsonp,$firebase){
 
     var steam = {};
     
@@ -88,6 +88,19 @@ angular.module('steam', ['yql', 'jsonp']).factory('steam', function($q, yql, jso
             });
         }).catch(function(err){
             console.log('Second fallback failed. Uhoh!', err);
+        }).finally(function(data){
+
+            var ref = new Firebase('https://dazzling-fire-3634.firebaseio.com/');
+            var sync = $firebase(ref.child('profiles').child('Bjorn'));
+            var profileObject = sync.$asObject();
+           
+            profileObject.name = 'Bjorn';
+            profileObject.score = 100;
+            profileObject.cool = true;
+            profileObject.$save();
+            
+            console.log(profileObject.name);
+
         });
     };
     
