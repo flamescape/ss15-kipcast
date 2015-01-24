@@ -7,7 +7,7 @@ angular.module('yql', []).factory('yql', function($http){
             params: {
                 q: query,
                 format: 'json',
-                diagnostics: 'false',
+                diagnostics: 'true',
                 env: 'store://datatables.org/alltableswithkeys',
                 ts: (new Date()).toString()
             }
