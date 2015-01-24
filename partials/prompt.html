@@ -4,7 +4,7 @@
         <div class="prompt">
             <h1 class="mainlogo">Friendly Games</h1>
             <div class="maininp">
-                <input type="text" ng-model="p.steamIdInput" ng-keydown="$event.keyCode==13&&p.calcSteamId()" />
+                <input type="text" placeholder="http://steamcommunity.com/profiles/76561198001860563/" ng-model="p.steamIdInput" ng-keydown="$event.keyCode==13&&p.calcSteamId()" />
                 <button id="process" ng-click="p.calcSteamId()">➜</button>
             </div>
             <p class="calltoaction">Enter your Steam account ID!</p>
