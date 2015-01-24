@@ -40,24 +40,12 @@ angular.module('steam', ['yql', 'jsonp']).factory('steam', function($q, yql, jso
     };
     
     steam.getFriends = function(steamid){
-    /*
-        return steam.getId64(steamid).then(function(steamid){
-            return jsonp("http://steamcommunity.com/profiles/"+steamid+"/friends/");
-        }).then(function($){
-            var f = $.find('.friendBlock.persona').map(function(){
-                var div = angular.element(this);
-                return {
-                    name: div.find('p:first').text().trim(),
-                    profileUrl: div.find('a:first').attr('href'),
-                    online: (div.div[1].p.span.content||'').trim(),
-                }
-            }).toArray();
-            console.log('f', f);
-            return f;
-        });*/
+        var id64 = null;
         
         return steam.getId64(steamid).then(function(steamid){
-            return yql("SELECT * FROM data.html.cssselect WHERE url='http://steamcommunity.com/profiles/"+steamid+"/friends/' AND css='.friendBlock.persona'");
+            id64 = steamid;
+            
+            return yql("SELECT * FROM data.html.cssselect WHERE url='http://steamcommunity.com/profiles/"+id64+"/friends/' AND css='.friendBlock.persona'");
         }).then(function(data){
             console.log('FRIENDS', data);
             return data.data.query.results.results.div.map(function(div){
@@ -72,8 +60,30 @@ angular.module('steam', ['yql', 'jsonp']).factory('steam', function($q, yql, jso
                     _html: div
                 };
             });
-        });
+        }).catch(function(err){
+            console.log('Error fetching YQL. Falling back to JSONP', err);
         
+            return jsonp("http://steamcommunity.com/profiles/"+id64+"/friends/").then(function($){
+                if ($.find('#mainContents h2:contains("Error")').length) {
+                    throw new Error($.find('#message').text());
+                }
+                return $.find('.friendBlock.persona').map(function(){
+                    var div = angular.element(this);
+                    return {
+                        name: div.find('.friendBlockContent').clone().children().remove().end().text().trim(),
+                        profileUrl: div.find('a:first').attr('href'),
+                        online: div.find('.friendSmallText').text().trim(),
+                        avatar: div.find('div > img').attr('src').replace(/.jpg$/, '_full.jpg'),
+                        isIngame: !!div.find('.in-game').length,
+                        isOnline: !!div.find('.online').length,
+                        isOffline: !!div.find('.offline').length,
+                        _html: div
+                    };
+                }).toArray();
+            });
+        }).catch(function(err){
+            console.log('Second fallback failed. Uhoh!', err);
+        });
     };
     
     steam.getGames = function(steamid){
