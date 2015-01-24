@@ -19,17 +19,28 @@ angular.module('app', ['ngRoute', 'steam'])
                 p.steamId = id;
             });
             p.updateFriends();
+            p.updateGames();
         };
         
         p.updateFriends = function() {
             p.loadingFriends = true;
             steam.getFriends(p.steamIdInput).then(function(friends){
                 p.friends = friends;
-                console.log(friends);
+                console.log('FRIENDS', friends);
             }).finally(function(){
                 p.loadingFriends = false;
             });
-        }
+        };
+        
+        p.updateGames = function() {
+            p.loadingGames = true;
+            steam.getGames(p.steamIdInput).then(function(games){
+                p.games = games;
+                console.log('GAMES', games);
+            }).finally(function(){
+                p.loadingGames = false;
+            });
+        };
         
     })
     

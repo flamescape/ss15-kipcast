@@ -51,6 +51,14 @@ angular.module('steam', ['yql']).factory('steam', function(yql, $q){
         });
     };
     
+    steam.getGames = function(steamid){
+        return steam.getId64(steamid).then(function(steamid){
+            return yql("select * from xml where url='http://steamcommunity.com/profiles/"+steamid+"/games/?tab=all&xml=1'");
+        }).then(function(data){
+            return data.data.query.results.gamesList.games.game;
+        });
+    };
+    
     return steam;
     
 });
