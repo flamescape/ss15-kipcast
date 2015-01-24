@@ -245,6 +245,15 @@ header h1 {
     float: left;
 }
 
+.friends.expanded {
+    width: 90%;
+}
+
+.friends.expanded .friend {
+    width: 300px;
+    flex: 1;
+}
+
 .loading h3 {
     float: left;
     font-family:'Oswald', sans-serif;

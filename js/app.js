@@ -82,6 +82,8 @@ angular.module('app', ['ngRoute', 'steam', 'angular-extend-promises'])
         var fc = this;
         
         fc.steamId = $routeParams.steamid;
+        fc.isExpanded = false;
+        
         fc.filter = '';
         
         fc.updateFriends = function() {

@@ -1,5 +1,7 @@
 
-<div class="friends" ng-controller="FriendsCtrl as fc">
+<div class="friends" ng-class="{expanded: fc.isExpanded}" ng-controller="FriendsCtrl as fc">
+
+    <button ng-click="fc.isExpanded = !fc.isExpanded">Expand / Contract</button>
 
     <div id="friends-filter">
         <input placeholder="-=360 N0 SC0P3R=-" type="text" ng-model="fc.filter" />
