@@ -44,7 +44,7 @@ angular.module('steam', ['yql']).factory('steam', function(yql, $q){
                     name: div.div[1].p.content.trim(),
                     profileUrl: div.a.href,
                     online: (div.div[1].p.span.content||'').trim(),
-                    avatar: div.div[0].img.src,
+                    avatar: div.div[0].img.src.replace(/.jpg$/, '_full.jpg'),
                     _html: div
                 }
             });
