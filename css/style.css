@@ -7,6 +7,10 @@ button {
     cursor: pointer;
 }
 
+.hidden {
+    display: none;
+}
+
 .mainpage {
     position: fixed;
     top: 0; right: 0; bottom: 0; left: 0;
@@ -219,11 +223,11 @@ button {
 
 .friends video {
     width: 100%;
-    margin: 0 auto;
+    margin: 20px auto 0 auto;
 }
 
 #loading {
-    background-color: #24253a;
+    background-color: #2a2539;
     border-radius: 10px;
 }
 

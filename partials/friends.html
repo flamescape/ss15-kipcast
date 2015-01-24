@@ -4,9 +4,11 @@
     <div id="friends-filter">
         <input placeholder="-=360] N0 SC0P3R=-" type="text" ng-model="fc.filter" />
     </div>
-    <div id="loading">
+    <div id="loading" ng-show="fc.loadingFriends">
     <h3>Loading...</h3>
-        <video ng-src="vids/loading.mp4" autoplay loop></video>
+        <video ng-src="vids/loading.mp4" ng-attr-poster="img/poster.png" autoplay loop>
+            <img src="img/loading.png" alt="loading">
+        </video>
     </div>
 
     <div ng-repeat="f in fc.friends|filter:{name:fc.filter}" class="friend">
