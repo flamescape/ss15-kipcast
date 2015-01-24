@@ -38,7 +38,6 @@ angular.module('app', ['ngRoute', 'steam'])
             p.loadingFriends = true;
             steam.getFriends(p.steamId).then(function(friends){
                 p.friends = friends;
-                console.log('FRIENDS', friends);
             }).finally(function(){
                 p.loadingFriends = false;
             });
@@ -48,7 +47,6 @@ angular.module('app', ['ngRoute', 'steam'])
             p.loadingGames = true;
             steam.getGames(p.steamId).then(function(games){
                 p.games = games;
-                console.log('GAMES', games);
             }).finally(function(){
                 p.loadingGames = false;
             });

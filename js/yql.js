@@ -8,7 +8,8 @@ angular.module('yql', []).factory('yql', function($http){
                 q: query,
                 format: 'json',
                 diagnostics: 'false',
-                env: 'store://datatables.org/alltableswithkeys'
+                env: 'store://datatables.org/alltableswithkeys',
+                ts: (new Date()).toString()
             }
         });
     };
