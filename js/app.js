@@ -62,6 +62,7 @@ angular.module('app', ['ngRoute', 'steam'])
         var fc = this;
         
         fc.steamId = $routeParams.steamid;
+        fc.filter = '';
         
         fc.updateFriends = function() {
             fc.loadingFriends = true;
@@ -70,6 +71,10 @@ angular.module('app', ['ngRoute', 'steam'])
             }).finally(function(){
                 fc.loadingFriends = false;
             });
+        };
+        
+        fc.applyFilter = function(friend){
+            return !!friend.name.toLowerCase().match(fc.filter.toLowerCase());
         };
         
         fc.updateFriends();
