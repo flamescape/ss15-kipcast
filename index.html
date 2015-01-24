@@ -14,8 +14,7 @@
     
     <div id="colorbg"></div>
     <div id="video-bg" ng-controller="BackgroundCtrl as p" ng-class={{p.x}}>
-        <video autoplay loop ng-attr-poster="{{ p.png }}" ng-src="{{ p.mp4 }}" type="video/webm">
-        </video>
+        <video autoplay loop ng-src="{{ p.mp4 }}" type="video/webm"></video>
     </div>
 	
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
