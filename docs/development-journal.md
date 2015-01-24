@@ -25,3 +25,9 @@ Trailblazer left our Teamspeak channel. Everyone was rude to him except Gareth.
 
 ### 01:28:17
 Björn has gone to bed
+
+### 01:52:57
+Gareth suggests we all play Curve Fever instead of do productive work.
+
+### 01:59:13
+John busts open the hackasnacks (Roasted Salted Almonds)
