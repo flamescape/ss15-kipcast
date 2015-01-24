@@ -100,6 +100,14 @@ angular.module('steam', ['yql', 'jsonp']).factory('steam', function($q, yql, jso
         });
     };
     
+    steam.getGameCategories = function(appid) {
+        return yql("SELECT * FROM data.html.cssselect WHERE url='http://store.steampowered.com/app/"+appid+"' AND css='#category_block .game_area_details_specs a'").then(function(data){
+            return data.data.query.results.results.a.map(function(a){
+                return a.content;
+            });
+        });
+    };
+    
     return steam;
     
 });
