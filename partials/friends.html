@@ -6,7 +6,7 @@
     </div>
    
 
-    <div ng-repeat="f in fc.friends|filter:fc.applyFilter" class="friend">
+    <div ng-repeat="f in fc.friends|filter:{name:fc.filter}" class="friend">
         <img src="{{f.avatar}}" width="42" height="42" class="friend-ava online"/>
         <div class="friend-text">
             <p class="friend-name">{{f.name}}</p>
