@@ -34,3 +34,6 @@ John busts open the hackasnacks (Roasted Salted Almonds)
 
 ### 03:47:12
 Josh starts to criticise our work. Gareth just barely refrains from getting in his car and driving over to pay Josh a visit.
+
+### 05:29:23
+Gareth signs off for tonight, content with knowing that he is carrying the team.
