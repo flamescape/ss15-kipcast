@@ -1,5 +1,5 @@
 
-angular.module('app', ['ngRoute', 'steam'])
+angular.module('app', ['ngRoute', 'steam', 'angular-extend-promises'])
 
     .config(function($routeProvider){
         $routeProvider
@@ -49,21 +49,35 @@ angular.module('app', ['ngRoute', 'steam'])
         
     })
     
-    .controller('GamesCtrl', function($routeParams, steam){
+    .controller('GamesCtrl', function($routeParams, $q, steam){
         var gc = this;
         
         gc.steamId = $routeParams.steamid;
         
         gc.updateGames = function() {
             gc.loadingGames = true;
-            steam.getGames(gc.steamId).then(function(games){
-                gc.games = games;
+            return steam.getGames(gc.steamId).then(function(games){
+                return (gc.games = games);
             }).finally(function(){
                 gc.loadingGames = false;
             });
         };
 
-        gc.updateGames();
+        
+        gc.fetchGameTags = function(games){
+            games = games.slice(0, 5);
+            console.log('fetching tags for', games);
+            
+            $q.when(games).map(function(game){
+                console.log('scraping game', game.appID);
+                return steam.getGameCategories(game.appID).then(function(tags){
+                    game.tags = tags;
+                });
+            }, {concurrency:2});
+            
+        };
+        
+        gc.updateGames().then(gc.fetchGameTags);
         
     })
     
