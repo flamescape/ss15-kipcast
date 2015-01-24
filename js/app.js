@@ -101,7 +101,7 @@ angular.module('app', ['ngRoute', 'steam', 'angular-extend-promises'])
     
     .controller('BackgroundCtrl', function() {
         var p = this, 
-            vids = ["ibbandobb", "speedrunners", "battleblock"],
+            vids = ["ibbandobb", "speedrunners", "battleblock", "assettocorsa"],
             n = Math.floor(Math.random()*vids.length);           
         
         p.randomizeVideo = function() {
