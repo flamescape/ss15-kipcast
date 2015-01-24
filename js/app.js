@@ -2,13 +2,19 @@
 angular.module('app', ['ngRoute', 'steam'])
 
     .config(function($routeProvider){
-        $routeProvider.when('/', {
-            templateUrl: 'partials/prompt.html',
-            controller: 'PromptCtrl as p'
-        });
+        $routeProvider
+            .when('/', {
+                templateUrl: 'partials/prompt.html',
+                controller: 'PromptCtrl as p'
+            })
+            .when('/id/:steamid', {
+                templateUrl: 'partials/profile.html',
+                controller: 'ProfileCtrl as p'
+            })
+        ;
     })
 
-    .controller('PromptCtrl', function(steam){
+    .controller('PromptCtrl', function(steam, $location){
         var p = this;
         
         p.steamId = null;
@@ -17,14 +23,20 @@ angular.module('app', ['ngRoute', 'steam'])
         p.calcSteamId = function($event){
             steam.getId64(p.steamIdInput).then(function(id){
                 p.steamId = id;
+                $location.path('/id/'+id);
             });
-            p.updateFriends();
-            p.updateGames();
         };
+        
+    })
+    
+    .controller('ProfileCtrl', function($routeParams, steam){
+        var p = this;
+        
+        p.steamId = $routeParams.steamid;
         
         p.updateFriends = function() {
             p.loadingFriends = true;
-            steam.getFriends(p.steamIdInput).then(function(friends){
+            steam.getFriends(p.steamId).then(function(friends){
                 p.friends = friends;
                 console.log('FRIENDS', friends);
             }).finally(function(){
@@ -34,13 +46,16 @@ angular.module('app', ['ngRoute', 'steam'])
         
         p.updateGames = function() {
             p.loadingGames = true;
-            steam.getGames(p.steamIdInput).then(function(games){
+            steam.getGames(p.steamId).then(function(games){
                 p.games = games;
                 console.log('GAMES', games);
             }).finally(function(){
                 p.loadingGames = false;
             });
         };
+        
+        p.updateFriends();
+        p.updateGames();
         
     })
     
