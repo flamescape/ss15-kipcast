@@ -1,11 +1,13 @@
-
-	<h1 class="mainlogo">Friendly Games</h1>
-    <input type="text" ng-model="p.steamId" />
-    <button id="process">➜</button>
-    <p class="calltoaction">Provide your Steam ID:</p>
-
+    <div class="mainpage">
+        <h1 class="mainlogo">Friendly Games</h1>
+        <input type="text" ng-model="p.steamId" />
+        <button id="process">➜</button>
+        <p class="calltoaction">Enter your Steam account ID!</p>
+    </div>
     <div ng-repeat="f in p.friends">
         <img src="{{f.avatar}}" width="16" height="16" />
         <span>Name: <a ng-href="{{f.profileUrl}}">{{f.name}}</a></span>
         <span><i>Online: {{f.online}}</i></span>
     </div>
+    
+    <div id="colorbg"></div>
