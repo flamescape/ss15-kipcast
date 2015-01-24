@@ -1,10 +1,9 @@
 
 <div class="friends" ng-controller="FriendsCtrl as fc">
 
-    <div>
-        <input type="text" ng-model="fc.filter" />
+    <div id="friends-filter">
+        <input placeholder="moeancurly" type="text" ng-model="fc.filter" />
     </div>
-   
 
     <div ng-repeat="f in fc.friends|filter:fc.applyFilter" class="friend">
         <img src="{{f.avatar}}" width="42" height="42" class="friend-ava online"/>

@@ -179,11 +179,19 @@ button {
     }
 }
 
+#friends-filter input {
+    width: 90%;
+    margin: 10px auto 20px auto;
+    border-radius: 100px;
+    padding-left: 5%;
+}
+
 .friends {
     background-color: rgba(17, 25, 35, 0.5);
     width: 25%;
     padding: 8px;
     float: left;
+    min-height: 100vh;
 }
 
 .friend {
@@ -192,12 +200,14 @@ button {
     color: #57cbde;
     font-size: 14px;
     height: 46px;
-    background: #222;
+    background-color: rgba( 84, 133, 183, 0.05);
     border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.5s ease;
 }
 
-.friend.hover {
-    background-color: rgba( 117, 204, 255, 0.3);
+.friend:hover {
+    background-color: rgba( 117, 204, 255, 0.2);
 }
 
 .friend-text {
@@ -246,7 +256,6 @@ button {
 .game img {
     border-radius: 8px;
 }
-
 
 @media screen and (max-device-width: 800px) {
   html { background: url(img/ibbobb.png) #000 no-repeat center center fixed; }
