@@ -11,13 +11,25 @@ angular.module('app', ['ngRoute', 'steam'])
     .controller('PromptCtrl', function(steam){
         var p = this;
         
-        p.steamId = 'http://steamcommunity.com/profiles/76561198001860563/';
+        p.steamId = null;
+        p.steamIdInput = 'http://steamcommunity.com/profiles/76561198001860563/';
         
-        steam.getFriends('STEAM_0:1:20797417').then(function(friends){
-            p.friends = friends;
-            console.log(friends);
-        });
+        p.calcSteamId = function($event){
+            steam.getId64(p.steamIdInput).then(function(id){
+                p.steamId = id;
+            });
+            p.updateFriends();
+        };
         
+        p.updateFriends = function() {
+            p.loadingFriends = true;
+            steam.getFriends(p.steamIdInput).then(function(friends){
+                p.friends = friends;
+                console.log(friends);
+            }).finally(function(){
+                p.loadingFriends = false;
+            });
+        }
         
     })
     
