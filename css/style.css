@@ -119,22 +119,21 @@ header h1 {
         0 5px 10px rgba(0, 0, 0, .25), 
         0 10px 10px rgba(0, 0, 0, .2), 
         0 20px 20px rgba(0, 0, 0, .15);
-    margin-top: 2vw;
+    margin: 2vw 0 1vw 0;
 }
 
-.calltoaction button {
-    position: relative;
-    top: -0.55em;
-    font-size: 65%;
-    text-decoration: underline;
-    font-weight: 700;
-    background: none;
-    border: none;
-    vertical-align: super;
-    padding: 0 3px;
+.info {
+    font-family:'Oswald', sans-serif;
+    font-size: 1.2vw;
     color: #fcfcee;
-    opacity: 0.75;
-  }
+    width: 73%;
+    margin: 0 auto;
+}
+
+.info a {
+    text-decoration: underline;
+    cursor: pointer;
+}
   
 #helpbox {
     background-color: #002f4b;

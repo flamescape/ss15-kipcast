@@ -7,7 +7,8 @@
                 <input type="text" placeholder="http://steamcommunity.com/profiles/76561198001860563/" ng-model="p.steamIdInput" ng-keydown="$event.keyCode==13&&p.calcSteamId()" />
                 <button ng-click="p.calcSteamId()">➜</button>
             </div>
-            <p class="calltoaction">Enter your Steam account ID!<button ng-click="p.showHelp()">?</button></p>
+            <p class="calltoaction">Enter your Steam account ID!</p>
+            <p class="info">Struggling to pick which game to play with a group of friends? We're here to help. Friendly Games will analyze you and your friends' Steam games to let you know which support multiplayer or co-op. Need a demo? <a ng-click="p.example('http://steamcommunity.com/profiles/76561198001860563/')">Click here</a>!</p>
             <div id="helpbox" ng-show="p.helpVisible">
                 <p>Don't have one handy? Test with one of ours!</p>
                 <ul>
