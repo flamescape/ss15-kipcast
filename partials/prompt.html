@@ -5,8 +5,8 @@
         <p class="calltoaction">Enter your Steam account ID!</p>
     </div>
     <div ng-repeat="f in p.friends">
-        <img src="{{f.avatar}}" width="16" height="16" />
-        <span>Name: <a ng-href="{{f.profileUrl}}">{{f.name}}</a></span>
+        <img src="{{f.avatar}}" width="42" height="42" class="online"/>
+        <span>{{f.name}}</span>
         <span><i>Online: {{f.online}}</i></span>
     </div>
     
