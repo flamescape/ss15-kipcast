@@ -19,9 +19,14 @@
 }
 
 
-.friend-name {
-    line-height: 52px;
+.friend {
+    margin-bottom: 8px;
 }
+
+.friend-ava {
+    vertical-align: middle;
+}
+
 .ingame {
     border: 2px solid #8bb43a;
 }
