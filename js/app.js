@@ -1,5 +1,5 @@
 
-angular.module('app', ['ngRoute'])
+angular.module('app', ['ngRoute', 'steam'])
 
     .config(function($routeProvider){
         $routeProvider.when('/', {
@@ -8,8 +8,17 @@ angular.module('app', ['ngRoute'])
         });
     })
 
-    .controller('PromptCtrl', function(){
-        this.steamId = 'http://steamcommunity.com/profiles/76561198001860563/';
+    .controller('PromptCtrl', function(steam){
+        var p = this;
+        
+        p.steamId = 'http://steamcommunity.com/profiles/76561198001860563/';
+        
+        steam.getFriends('STEAM_0:1:20797417').then(function(friends){
+            p.friends = friends;
+            console.log(friends);
+        });
+        
+        
     })
     
 ;
