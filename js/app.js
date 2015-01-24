@@ -17,6 +17,7 @@ angular.module('app', ['ngRoute', 'steam'])
     .controller('PromptCtrl', function(steam, $location, $timeout){
         var p = this;
         
+        p.helpVisible = false;
         p.steamId = null;
         p.steamIdInput = '';
         
@@ -31,6 +32,14 @@ angular.module('app', ['ngRoute', 'steam'])
             p.steamIdInput = steamid;
             $timeout(p.calcSteamId, 500);
         };
+        
+        p.showHelp = function() {
+            p.helpVisible = true;
+        };
+        
+        p.hideHelp = function() {
+            p.helpVisible = false;
+        }
         
     })
     
@@ -56,7 +65,7 @@ angular.module('app', ['ngRoute', 'steam'])
                 p.loadingGames = false;
             });
         };
-        
+
         p.updateFriends();
         p.updateGames();
         
