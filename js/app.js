@@ -37,28 +37,42 @@ angular.module('app', ['ngRoute', 'steam'])
     .controller('ProfileCtrl', function($routeParams, steam){
         var p = this;
         
-        p.steamId = $routeParams.steamid;
         
-        p.updateFriends = function() {
-            p.loadingFriends = true;
-            steam.getFriends(p.steamId).then(function(friends){
-                p.friends = friends;
+    })
+    
+    .controller('GamesCtrl', function($routeParams, steam){
+        var gc = this;
+        
+        gc.steamId = $routeParams.steamid;
+        
+        gc.updateGames = function() {
+            gc.loadingGames = true;
+            steam.getGames(gc.steamId).then(function(games){
+                gc.games = games;
             }).finally(function(){
-                p.loadingFriends = false;
+                gc.loadingGames = false;
+            });
+        };
+
+        gc.updateGames();
+        
+    })
+    
+    .controller('FriendsCtrl', function($routeParams, steam){
+        var fc = this;
+        
+        fc.steamId = $routeParams.steamid;
+        
+        fc.updateFriends = function() {
+            fc.loadingFriends = true;
+            steam.getFriends(fc.steamId).then(function(friends){
+                fc.friends = friends;
+            }).finally(function(){
+                fc.loadingFriends = false;
             });
         };
         
-        p.updateGames = function() {
-            p.loadingGames = true;
-            steam.getGames(p.steamId).then(function(games){
-                p.games = games;
-            }).finally(function(){
-                p.loadingGames = false;
-            });
-        };
-        
-        p.updateFriends();
-        p.updateGames();
+        fc.updateFriends();
         
     })
     
