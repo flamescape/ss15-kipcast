@@ -14,14 +14,4 @@
         <div class="friend-text">
             <p class="friend-name">{{f.name}}</p>
             <p class="friend-status"><i>{{f.online}}</i></p>
-
-    <div id="friends-list">
-        <div ng-repeat="f in fc.friends|filter:{name:fc.filter}" class="friend">
-            <img src="{{f.avatar}}" width="42" height="42" class="friend-ava online"/>
-            <div class="friend-text">
-                <p class="friend-name">{{f.name}}</p>
-                <p class="friend-status"><i>{{f.online}}</i></p>
-            </div>
-        </div>
-    </div>
 </div>
