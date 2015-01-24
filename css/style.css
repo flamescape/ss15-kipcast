@@ -198,7 +198,7 @@ button {
     min-height: 100vh;
 }
 
-.friends h3 {
+.loading h3 {
     float: left;
     font-family:'Oswald', sans-serif;
     font-size: 1.7vw;
@@ -221,16 +221,18 @@ button {
 
 }
 
-.friends img {
+.games .loading {
+    margin-top: 50px;
+}
+
+.loading img {
     float: left;
     height: 1.7vw;
     margin: 0.5vw;
     margin-right: 1.3vw;
 }
 
-#loading {
-    background-color: #2a2539;
-    border-radius: 10px;
+.loading {
     margin: auto;
 }
 

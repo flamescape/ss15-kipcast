@@ -1,5 +1,9 @@
 
 <div class="games" ng-controller="GamesCtrl as gc">
+    <div class="loading" ng-show="gc.loadingGames">
+        <img src="img/spinner.svg" alt="loading">
+        <h3>Loading Games...</h3>
+    </div>
     <div ng-repeat="g in gc.games" class="game">
         <img src="{{g.logo}}" width="184" height="69" class="game" alt="{{g.name}} logo" ng-attr-title="{{g.name}}"/>
         <ul style="position:relative;top:-70px;left:0;z-index:9999;background:rgba(255,255,255,0.7);margin:0;padding:0;">
