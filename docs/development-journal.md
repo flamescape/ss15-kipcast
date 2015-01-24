@@ -40,3 +40,6 @@ Gareth signs off for tonight, content with knowing that he is carrying the team.
 
 ### 10:13:11
 Björn wakes up and is disappointed by the fact that everyone else is asleep.
+
+### 11:23:19
+Björn entertains Gareth with soundclips of his sister singing "Do you want to build a snowman?". She missed a line. John is sleeping.
