@@ -264,18 +264,23 @@ button {
     vertical-align: middle;
     margin-right: 8px;
     float: left;
+    border-width: 2px;
+    border-style: solid;
 }
 
 .ingame {
-    border: 2px solid #8bb43a;
+    border-color: #8bb43a;
+    color: #8bb43a;
 }
 
 .online {
-    border: 2px solid #519fbe;
+    border-color: #519fbe;
+    color: #519fbe;
 }
 
 .offline {
-    border: 2px solid #
+    border-color: #898989;
+    color: #898989;
 }
 
 .games {

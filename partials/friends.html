@@ -9,8 +9,8 @@
         <h3>Loading Friends...</h3>
     </div>
 
-    <div ng-repeat="f in fc.friends|filter:{name:fc.filter}" class="friend">
-        <img src="{{f.avatar}}" width="42" height="42" class="friend-ava online"/>
+    <div ng-repeat="f in fc.friends|filter:{name:fc.filter}" class="friend {{f.isIngame ? 'ingame' : f.isOnline ? 'online' : 'offline'}}" >
+        <img src="{{f.avatar}}" width="42" height="42" class="friend-ava "/>
         <div class="friend-text">
             <p class="friend-name">{{f.name}}</p>
             <p class="friend-status"><i>{{f.online}}</i></p>
