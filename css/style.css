@@ -3,6 +3,10 @@ body {
     padding: 0;
 }
 
+button {
+    cursor: pointer;
+}
+
 .mainpage {
     position: fixed;
     top: 0; right: 0; bottom: 0; left: 0;
@@ -87,6 +91,48 @@ body {
     margin-top: 2vw;
 }
 
+.calltoaction button {
+    position: relative;
+    top: -0.55em;
+    font-size: 65%;
+    text-decoration: underline;
+    font-weight: 700;
+    background: none;
+    border: none;
+    vertical-align: super;
+    padding: 0 3px;
+    color: #fcfcee;
+    opacity: 0.75;
+  }
+  
+#helpbox {
+    background-color: #002f4b;
+    opacity: 0.75;
+    margin: auto;
+    color: white;
+    border: 2px solid black;
+    border-radius: 24px;
+    padding: 12px;
+    overflow: hidden;
+}
+
+#helpbox p {
+    font-family:'Oswald', sans-serif;
+    margin: 0 0 10px 0;
+    text-align: center;
+    font-size: 2vw;
+}
+
+#helpbox li {
+    margin-bottom: 10px;
+}
+
+#helpbox li a {
+    font-family: monospace;
+    border-bottom: 1px dashed white;
+    cursor: pointer;
+}
+
 #colorbg {
     height: 100%;
     width: 100%;
@@ -134,7 +180,7 @@ body {
 }
 
 .friends {
-    background-color: #161616;
+    background-color: rgba(17, 25, 35, 0.5);
     width: 25%;
     padding: 8px;
     float: left;
@@ -148,6 +194,10 @@ body {
     height: 46px;
     background: #222;
     border-radius: 4px;
+}
+
+.friend.hover {
+    background-color: rgba( 117, 204, 255, 0.3);
 }
 
 .friend-text {
