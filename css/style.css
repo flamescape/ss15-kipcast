@@ -192,6 +192,8 @@ button {
     color: #57cbde;
     font-size: 14px;
     height: 46px;
+    background: #222;
+    border-radius: 4px;
 }
 
 .friend.hover {

@@ -7,19 +7,9 @@
     </div>
     -->
 
-    <div class="friends">
-        <div ng-repeat="f in p.friends" class="friend">
-            <img src="{{f.avatar}}" width="42" height="42" class="friend-ava online"/>
-            <div class="friend-text">
-                <p class="friend-name">{{f.name}}</p>
-                <p class="friend-status"><i>{{f.online}}</i></p>
-            </div>
-        </div>
-    </div>
+
+    <div ng-include="'partials/friends.html'"></div>
+    <div ng-include="'partials/games.html'"></div>
     
-    <div class="games">
-        <div ng-repeat="g in p.games" class="game">
-            <img src="{{g.logo}}" width="184" height="69" class="game" alt="{{g.name}} logo" ng-attr-title="{{g.name}}"/>
-        </div>
-    </div>
+    
     <div id="colorbg"></div>

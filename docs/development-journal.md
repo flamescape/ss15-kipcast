@@ -46,3 +46,6 @@ Björn entertains Gareth with soundclips of his sister singing "Do you want to b
 
 ### 11:52:07
 John wakes up and checks the commit log. He is puzzled that the only updated file is this very one. Surely the Europeans must have loads of uncommitted code then, after all they are 5/6 hours ahead.
+
+### 12:33:45
+It is snowing at John and Björns house. John makes a great joke: "What is this, Static Showdown or Static _SNOWDOWN_??". High fives were exchanged. Gareth was sour that it was not snowing at his house.

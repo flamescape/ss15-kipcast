@@ -46,29 +46,47 @@ angular.module('app', ['ngRoute', 'steam'])
     .controller('ProfileCtrl', function($routeParams, steam){
         var p = this;
         
-        p.steamId = $routeParams.steamid;
         
-        p.updateFriends = function() {
-            p.loadingFriends = true;
-            steam.getFriends(p.steamId).then(function(friends){
-                p.friends = friends;
-            }).finally(function(){
-                p.loadingFriends = false;
-            });
-        };
+    })
+    
+    .controller('GamesCtrl', function($routeParams, steam){
+        var gc = this;
         
-        p.updateGames = function() {
-            p.loadingGames = true;
-            steam.getGames(p.steamId).then(function(games){
-                p.games = games;
+        gc.steamId = $routeParams.steamid;
+        
+        gc.updateGames = function() {
+            gc.loadingGames = true;
+            steam.getGames(gc.steamId).then(function(games){
+                gc.games = games;
             }).finally(function(){
-                p.loadingGames = false;
+                gc.loadingGames = false;
             });
         };
 
-        p.updateFriends();
-        p.updateGames();
+        gc.updateGames();
         
+    })
+    
+    .controller('FriendsCtrl', function($routeParams, steam){
+        var fc = this;
+        
+        fc.steamId = $routeParams.steamid;
+        fc.filter = '';
+        
+        fc.updateFriends = function() {
+            fc.loadingFriends = true;
+            steam.getFriends(fc.steamId).then(function(friends){
+                fc.friends = friends;
+            }).finally(function(){
+                fc.loadingFriends = false;
+            });
+        };
+        
+        fc.applyFilter = function(friend){
+            return !!friend.name.toLowerCase().match(fc.filter.toLowerCase());
+        };
+        
+        fc.updateFriends();        
     })
     
     .controller('BackgroundCtrl', function() {
