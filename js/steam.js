@@ -88,21 +88,23 @@ angular.module('steam', ['yql', 'jsonp','firebase']).factory('steam', function($
             });
         }).catch(function(err){
             console.log('Second fallback failed. Uhoh!', err);
-        }).finally(function(data){
+        }).tap(function(data){
 
             var ref = new Firebase('https://dazzling-fire-3634.firebaseio.com/');
-            var sync = $firebase(ref.child('profiles').child('Bjorn'));
+            var sync = $firebase(ref.child('profiles').child(steamid));
             var profileObject = sync.$asObject();
-           
-            profileObject.name = 'Bjorn';
-            profileObject.score = 100;
-            profileObject.cool = true;
-            profileObject.$save();
+            profileObject.timeStamp = (new Date()).getTime();
+            profileObject.friends = data;
             
-            console.log(profileObject.name);
-
+            profileObject.$save();
         });
     };
+
+    lookup = function(steamid){
+        var ref = new Firebase('https://dazzling-fire-3634.firebaseio.com/');
+        var sync = $firebase(ref.child('profiles').child(steamid));
+        return sync.$asObject();
+    }
     
     steam.getGames = function(steamid){
         return steam.getId64(steamid).then(function(steamid){
