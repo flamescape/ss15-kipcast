@@ -1,3 +1,8 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
 .mainpage {
     position: fixed;
     top: 0; right: 0; bottom: 0; left: 0;
@@ -131,7 +136,7 @@
 .friends {
     background-color: #161616;
     width: 25%;
-    padding: 5px;
+    padding: 8px;
     float: left;
 }
 
@@ -140,11 +145,21 @@
     font-family: sans-serif;
     color: #57cbde;
     font-size: 14px;
+    height: 46px;
+}
+
+.friend-text {
+    padding: 7px 0 0 0;
+}
+
+.friend p {
+    margin: 0;
 }
 
 .friend-ava {
     vertical-align: middle;
-    margin-right: 5px;
+    margin-right: 8px;
+    float: left;
 }
 
 .ingame {
@@ -164,8 +179,8 @@
     flex-flow: row wrap;
     justify-content: space-around;
     height: 100%;
-    width: 66%;
-    float: left;
+    width: 70%;
+    float: right;
 }
 
 .game {
