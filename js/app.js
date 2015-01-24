@@ -14,17 +14,22 @@ angular.module('app', ['ngRoute', 'steam'])
         ;
     })
 
-    .controller('PromptCtrl', function(steam, $location){
+    .controller('PromptCtrl', function(steam, $location, $timeout){
         var p = this;
         
         p.steamId = null;
-        p.steamIdInput = 'http://steamcommunity.com/profiles/76561198001860563/';
+        p.steamIdInput = '';
         
         p.calcSteamId = function($event){
             steam.getId64(p.steamIdInput).then(function(id){
                 p.steamId = id;
                 $location.path('/id/'+id);
             });
+        };
+        
+        p.example = function(steamid) {
+            p.steamIdInput = steamid;
+            $timeout(p.calcSteamId, 500);
         };
         
     })
