@@ -37,3 +37,6 @@ Josh starts to criticise our work. Gareth just barely refrains from getting in h
 
 ### 05:29:23
 Gareth signs off for tonight, content with knowing that he is carrying the team.
+
+### 10:13:11
+Björn wakes up and is disappointed by the fact that everyone else is asleep.
