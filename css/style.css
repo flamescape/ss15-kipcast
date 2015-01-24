@@ -1,6 +1,7 @@
 body {
     margin: 0;
     padding: 0;
+    overflow: hidden;
 }
 
 button {
@@ -221,7 +222,7 @@ header h1 {
 }
 
 #friends-list {
-    height: calc(99vh - 100px);
+    height: calc(97vh - 100px);
     overflow-y: scroll;
 }
 ::-webkit-scrollbar {
@@ -330,9 +331,10 @@ header h1 {
     display: flex;
     flex-flow: row wrap;
     justify-content: space-around;
-    height: 100%;
+    height: calc(100vh - 50px);
     width: 70%;
     float: right;
+    overflow-y: scroll;
 }
 
 .game {
