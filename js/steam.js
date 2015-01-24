@@ -2,9 +2,14 @@ angular.module('steam', ['yql', 'jsonp']).factory('steam', function($q, yql, jso
 
     var steam = {};
     
+    var vanityCache = {};
+    
     steam.vanityToId64 = function(name){
+        if (vanityCache[name]) {
+            return vanityCache[name];
+        }
         return yql("select * from xml where url='http://steamcommunity.com/id/"+name+"/?xml=1'").then(function(data){
-            return data.data.query.results.profile.steamID64;
+            return (vanityCache[name] = data.data.query.results.profile.steamID64);
         });
     };
     

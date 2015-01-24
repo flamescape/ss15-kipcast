@@ -82,11 +82,7 @@ angular.module('app', ['ngRoute', 'steam'])
             });
         };
         
-        fc.applyFilter = function(friend){
-            return !!friend.name.toLowerCase().match(fc.filter.toLowerCase());
-        };
-        
-        fc.updateFriends();        
+        fc.updateFriends();
     })
     
     .controller('BackgroundCtrl', function() {
