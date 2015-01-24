@@ -3,7 +3,9 @@ angular.module('steam', ['yql']).factory('steam', function(yql, $q){
     var steam = {};
     
     steam.vanityToId64 = function(name){
-        return '1234:'+name;
+        return yql("select * from xml where url='http://steamcommunity.com/id/"+name+"/?xml=1'").then(function(data){
+            return data.data.query.results.profile.steamID64;
+        });
     };
     
     steam.getId64 = function(steamid){
@@ -30,6 +32,8 @@ angular.module('steam', ['yql']).factory('steam', function(yql, $q){
         } else if (m = steamid.match(/^\[U:\d+:\d+\]$/)) {
             // SteamID3 format
             throw new Error('SteamID3 not supported yet');
+        } else {
+            steamid = steam.vanityToId64(steamid);
         }
 
         return $q.when(steamid);
