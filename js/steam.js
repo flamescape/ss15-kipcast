@@ -39,6 +39,7 @@ angular.module('steam', ['yql']).factory('steam', function(yql, $q){
         return steam.getId64(steamid).then(function(steamid){
             return yql("SELECT * FROM data.html.cssselect WHERE url='http://steamcommunity.com/profiles/"+steamid+"/friends/' AND css='.friendBlock.persona'");
         }).then(function(data){
+            console.log('FRIENDS', data);
             return data.data.query.results.results.div.map(function(div){
                 return {
                     name: div.div[1].p.content.trim(),
@@ -58,6 +59,7 @@ angular.module('steam', ['yql']).factory('steam', function(yql, $q){
         return steam.getId64(steamid).then(function(steamid){
             return yql("select * from xml where url='http://steamcommunity.com/profiles/"+steamid+"/games/?tab=all&xml=1'");
         }).then(function(data){
+            console.log('GAMES', data);
             return data.data.query.results.gamesList.games.game;
         });
     };
