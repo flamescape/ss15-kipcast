@@ -1,4 +1,4 @@
-angular.module('steam', ['yql']).factory('steam', function(yql, $q){
+angular.module('steam', ['yql', 'jsonp']).factory('steam', function($q, yql, jsonp){
 
     var steam = {};
     
@@ -40,6 +40,22 @@ angular.module('steam', ['yql']).factory('steam', function(yql, $q){
     };
     
     steam.getFriends = function(steamid){
+    /*
+        return steam.getId64(steamid).then(function(steamid){
+            return jsonp("http://steamcommunity.com/profiles/"+steamid+"/friends/");
+        }).then(function($){
+            var f = $.find('.friendBlock.persona').map(function(){
+                var div = angular.element(this);
+                return {
+                    name: div.find('p:first').text().trim(),
+                    profileUrl: div.find('a:first').attr('href'),
+                    online: (div.div[1].p.span.content||'').trim(),
+                }
+            }).toArray();
+            console.log('f', f);
+            return f;
+        });*/
+        
         return steam.getId64(steamid).then(function(steamid){
             return yql("SELECT * FROM data.html.cssselect WHERE url='http://steamcommunity.com/profiles/"+steamid+"/friends/' AND css='.friendBlock.persona'");
         }).then(function(data){
@@ -54,9 +70,10 @@ angular.module('steam', ['yql']).factory('steam', function(yql, $q){
                     isOnline: !!div.class.match(/online/),
                     isOffline: !!div.class.match(/offline/),
                     _html: div
-                }
+                };
             });
         });
+        
     };
     
     steam.getGames = function(steamid){
