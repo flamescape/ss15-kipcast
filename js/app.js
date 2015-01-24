@@ -62,5 +62,18 @@ angular.module('app', ['ngRoute', 'steam'])
         
     })
     
+    .controller('BackgroundCtrl', function() {
+        var p = this, 
+            vids = ["ibbandobb", "speedrunners"],
+            n = Math.floor(Math.random()*vids.length);           
+        
+        p.randomizeVideo = function() {
+            p.mp4 = "vids/" + vids[n] + ".mp4";
+            p.png = "img/" + vids[n] + ".png";
+        };
+        
+        p.randomizeVideo(); 
+    })
+    
 ;
 
