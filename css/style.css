@@ -18,13 +18,22 @@
   z-index: -99;
 }
 
+.friends {
+    background-color: #161616;
+    width: 25%;
+    padding: 5px;
+}
 
 .friend {
     margin-bottom: 8px;
+    font-family: sans-serif;
+    color: #519fbe;
+    font-size: 14px;
 }
 
 .friend-ava {
     vertical-align: middle;
+    margin-right: 5px;
 }
 
 .ingame {

@@ -22,10 +22,11 @@
         <p class="calltoaction">Enter your Steam account ID!</p>
     </div>
 
-    <div ng-repeat="f in p.friends" class="friend">
-        <img src="{{f.avatar}}" width="42" height="42" class="friend-ava online"/>
-        <span class="friend-name">{{f.name}}</span>
-        <span><i>{{f.online}}</i></span>
+    <div class="friends">
+        <div ng-repeat="f in p.friends" class="friend">
+            <img src="{{f.avatar}}" width="42" height="42" class="friend-ava online"/>
+            <span class="friend-name">{{f.name}}</span>
+            <span><i>{{f.online}}</i></span>
+        </div>
     </div>
-    
     <div id="colorbg"></div>
