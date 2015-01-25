@@ -137,6 +137,7 @@ header input {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  align-content: flex-start;
   flex-wrap: wrap;
   flex-grow: 1;
   overflow-y: scroll;
