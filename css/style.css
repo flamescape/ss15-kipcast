@@ -355,6 +355,10 @@ header h1 {
     background-color: rgba( 117, 204, 255, 0.2);
 }
 
+.friend.selected {
+    outline: 1px solid orange;
+}
+
 .friend-text {
     padding: 7px 0 0 0;
 }

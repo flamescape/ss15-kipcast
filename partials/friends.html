@@ -6,7 +6,7 @@
                     <h3>Loading Friends...</h3>
                 </div>
                 <div id="friends-list" class="scrollable">
-                    <div ng-repeat="f in fc.friends|filter:{name:fc.filter}" class="friend {{f.isIngame ? 'ingame' : f.isOnline ? 'online' : 'offline'}}" >
+                    <div ng-repeat="f in fc.friends|filter:{name:fc.filter}" ng-class="{friend:1, ingame:f.isIngame, 'online':f.isOnline, 'offline':f.isOffline, selected:f.selected}" ng-click="fc.selectFriend(f)" >
                         <img src="{{f.avatar}}" width="42" height="42" class="friend-ava "/>
                         <div class="friend-text">
                             <p class="friend-name">{{f.name}}</p>
