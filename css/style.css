@@ -28,6 +28,7 @@ input:focus {
 }
 
 header {
+    position:relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -36,6 +37,7 @@ header {
 }
 
 header h1 {
+    height: 62px;
     font-size: 45px;
     text-align: left;
     font-family:'Grand Hotel', cursive;
@@ -76,6 +78,13 @@ header input {
     color: #fcfcee;
     font-size: 2em;
     margin-right: 10px;
+}
+
+header  nav {
+    position: absolute;
+    background-color: pink;
+    top: 62px;
+    right: 10px;
 }
 
 #wrapper {
