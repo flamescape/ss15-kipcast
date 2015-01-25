@@ -12,7 +12,7 @@
                 </ul>
             </nav>
         </header>
-        <div class="progressbar" ng-class="{'pbDone':p.progressPct == '100%', pb:p.progressPct != '100%'}"><div ng-style="{width:p.progressPct}"></div></div>
+
         <div id="wrapper">
             <section id="friends" class="scrollable" ng-class="{expanded: p.friends.flyoutExpanded}" ng-controller="FriendsCtrl as fc" ng-include="'partials/friends.html'"></section>
             <div id="friends-expand">

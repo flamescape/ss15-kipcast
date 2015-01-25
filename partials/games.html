@@ -54,11 +54,13 @@
             </table>
         </div>
     </div>
-
+    <div class="progressbar" ng-class="{'pbDone':p.progressPct == '100%', pb:p.progressPct != '100%'}"><div ng-style="{width:p.progressPct}"></div></div>
+    
     <div class="loading" ng-show="gc.loadingGames">
         <img src="img/spinner.svg" alt="loading">
         <h3>Loading Games...</h3>
     </div>
+
 
     <!-- <img ng-src="{{p.profile.avatarMedium}}"/> -->
     <h2>{{p.profile.steamID}}'s Games</h2>
