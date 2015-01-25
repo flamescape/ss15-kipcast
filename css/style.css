@@ -237,6 +237,10 @@ header nav li:hover {
 }
 
 #friends {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-content: flex-start;
     min-width: 400px;
     max-width: 400px;
     background-color: rgba(17, 25, 35, 0.5);
@@ -247,6 +251,7 @@ header nav li:hover {
 #friends-filter {
     padding-top: 10px;
     margin-bottom: 15px;
+    flex-shrink: 0;
 }
 
 #friends-filter input {
