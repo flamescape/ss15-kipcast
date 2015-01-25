@@ -9,6 +9,9 @@ angular.module('progress', ['angular-extend-promises'])
         }
         
         var sv = function(p){
+            if (sv.max > 0 && sv.max === sv.pos) {
+                sv.reset();
+            }
             p = $q.when(p).finally(function(){
                 sv.pos++;
                 emit();
