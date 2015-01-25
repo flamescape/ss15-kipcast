@@ -711,6 +711,16 @@ header nav li:hover {
     padding: 4px;
 }
 
+.friend .friend-gameserror {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 38px;
+    height: 38px;
+    padding: 4px;
+    content: url(/img/small-alert.png);
+}
+
 .ingame {
     color: #8bb43a;
 }

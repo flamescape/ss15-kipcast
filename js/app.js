@@ -33,24 +33,35 @@ angular.module('app', ['ngRoute', 'steam', 'angular-extend-promises', 'progress'
         
         var selectedFriends = [];
         
+        sv.deselect = function(f) {
+            f.selected = false;
+            var idx = selectedFriends.indexOf(f);
+            if (idx >= 0) {
+                selectedFriends.splice(idx, 1);
+            }
+        };
+        
         sv.select = function(f){
             if (!f.selected) {
                 f.selected = true;
+                f.gamesError = null;
                 selectedFriends.push(f);
                 if (!f.gamesPromise) {
                     // fetch games belonging to friend (f)
                     f.gamesPromise = steam.getId64(f.profileUrl).then(function(steamid){
                         return steam.getGames(steamid);
                     }).then(function(games){
+                        if (!games || games.error) {
+                            f.gamesPromise = null;
+                            f.gamesError = (games && games.error) || "Could not retreive games list. Profile is private or unavailable";
+                            return sv.deselect(f);
+                        }
                         f.games = games;
+                        f.gamesError = null;
                     });
                 }
             } else {
-                f.selected = false;
-                var idx = selectedFriends.indexOf(f);
-                if (idx >= 0) {
-                    selectedFriends.splice(idx, 1);
-                }
+                sv.deselect(f);
             }
         };
         
@@ -102,22 +113,12 @@ angular.module('app', ['ngRoute', 'steam', 'angular-extend-promises', 'progress'
         
         p.calcSteamId = function($event){
             steam.getProfileData(p.steamIdInput).then(function(profile){
-                if (!profile.steamID64) {
-                    throw new Error('SteamID64 not found');
-                }
-                
-                if (profile.privacyMessage && profile.privacyMessage.content) {
-                    return p.addError(profile.privacyMessage.content);
-                }
-                
-                if (profile.privacyState && profile.privacyState == "private") {
-                    return p.addError("Sorry, this profile is private");
+                if (!!profile.error) {
+                    return p.addError(profile.error);
                 }
                 
                 p.steamId = profile.steamID64;
                 $location.path('/id/'+profile.steamID64);
-            }).catch(function(){
-                p.addError("Sorry, steam profile not found");
             });
         };
         
