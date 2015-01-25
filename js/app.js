@@ -129,6 +129,12 @@ angular.module('app', ['ngRoute', 'steam', 'angular-extend-promises', 'progress'
             console.log('MY PROFILE', profile);
         });
         
+        p.showNav = false;
+        p.showInfoPage = function(idx){
+            p.curInfoPage = idx;
+            p.showNav = false;
+        };
+        
     })
     
     .controller('GamesCtrl', function($routeParams, $q, steam, friends){

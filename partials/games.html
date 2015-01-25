@@ -1,7 +1,23 @@
+    <div ng-show="p.curInfoPage">
+        <div ng-show="p.curInfoPage == 'about'">
+            <h1>About Us</h1>
+        </div>
+        <div ng-show="p.curInfoPage == 'team'">
+            <h1>Team</h1>
+        </div>
+        <div ng-show="p.curInfoPage == 'credits'">
+            <h1>Credits</h1>
+        </div>
+        <div ng-show="p.curInfoPage == 'devlog'">
+            <h1>Development Log</h1>
+        </div>
+    </div>
+
     <div class="loading" ng-show="gc.loadingGames">
         <img src="img/spinner.svg" alt="loading">
         <h3>Loading Games...</h3>
     </div>
+
     <!-- <img ng-src="{{p.profile.avatarMedium}}"/> -->
     <h2>{{p.profile.steamID}}'s Games</h2>
     
