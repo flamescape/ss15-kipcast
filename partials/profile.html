@@ -1,7 +1,10 @@
     <div id="main">
         <header>
             <h1><a href="#/">Friendly Games</a></h1>
+            <div class="maininp" id="searchThingy">
             <input type="text" placeholder="http://steamcommunity.com/id/kipke/" ng-model="p.steamId" ng-keydown="$event.keyCode==13&&p.switchProfile(p.steamId)" />
+            <button ng-click="p.calcSteamId()">➜</button>
+            </div>
             <button id="menu" ng-click="p.showNav = !p.showNav">☰</button>
             <nav ng-show="p.showNav">
                 <ul>

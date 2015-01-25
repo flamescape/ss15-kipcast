@@ -3,7 +3,7 @@
     <div class="mainpage">
         <div class="prompt">
             <h1 class="mainlogo">Friendly Games</h1>
-            <div class="maininp">
+            <div class="maininp" id="maininp">
                 <input type="text" placeholder="http://steamcommunity.com/profiles/76561198001860563/" ng-model="p.steamIdInput" ng-keydown="$event.keyCode==13&&p.calcSteamId()" />
                 <button ng-click="p.calcSteamId()">➜</button>
             </div>
