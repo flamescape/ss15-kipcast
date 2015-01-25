@@ -244,7 +244,7 @@ header nav li:hover {
 }
 
 #friends-filter {
-    padding-left: 20px;
+    padding-top: 10px;
 }
 
 #friends-filter input {
@@ -254,7 +254,7 @@ header nav li:hover {
 
 #friends-list {
     overflow-y: scroll;
-    margin-top: 30px;
+    margin-top: 25px;
 }
 
 .expanded #friends-list {
