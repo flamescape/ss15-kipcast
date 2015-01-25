@@ -3,20 +3,15 @@
         <h3>Loading Games...</h3>
     </div>
     <h1 class="titlecard">Multiplayer</h1>
-    <div ng-repeat="g in gc.games|filter:gc.isGameOwnedByAllFriends | filter:gc.mpCoopFilter" class="game" ng-style="{opacity:g.info.isMultiplayer?1:0.15}">
-        
-        <img src="{{g.logo}}" width="184" height="69" class="game" alt="{{g.name}} logo" ng-attr-title="{{g.name}}"/>
-        
-        <div style="position:relative;top:-70px;left:0;z-index:9999;background:rgba(255,255,255,0.7);margin:0;padding:0;">
-            
+    <a ng-repeat="g in gc.games|filter:gc.isGameOwnedByAllFriends | filter:gc.mpCoopFilter" href="{{gc.runLink}}" class="game" ng-style="{opacity:g.info.isMultiplayer?1:0.15}">        
+        <img src="{{g.logo}}" width="184" height="69" class="game" alt="{{g.name}} logo" ng-attr-title="{{g.name}}"/>        
+        <div style="position:relative;top:-70px;left:0;z-index:9999;background:rgba(255,255,255,0.7);margin:0;padding:0;">            
         </div>
-    </div>
+    </a>
     <h1 class="titlecard">Not Multiplayer</h1>
-    <div ng-repeat="g in gc.games|filter:gc.isGameOwnedByAllFriends | filter:spOnlyFilter" class="game" ng-style="{opacity:g.info.isMultiplayer?1:0.15}">
-        
-        <img src="{{g.logo}}" width="184" height="69" class="game" alt="{{g.name}} logo" ng-attr-title="{{g.name}}"/>
-        
+    <a ng-repeat="g in gc.games|filter:gc.isGameOwnedByAllFriends | filter:spOnlyFilter" href="{{g.runLink}}" class="game" ng-style="{opacity:g.info.isMultiplayer?1:0.15}">        
+        <img src="{{g.logo}}" width="184" height="69" class="game" alt="{{g.name}} logo" ng-attr-title="{{g.name}}"/>        
         <div style="position:relative;top:-70px;left:0;z-index:9999;background:rgba(255,255,255,0.7);margin:0;padding:0;">
             
         </div>
-    </div>
+    </a>

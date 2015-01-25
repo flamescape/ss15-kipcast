@@ -132,7 +132,7 @@ angular.module('steam', ['yql', 'jsonp','firebase']).factory('steam', function($
                         return a.content;
                     });
                     game.runLink = 'steam://rungameid/'+appid;
-                    
+                    console.log(game.runLink);
                     game.lastUpdated = (new Date()).getTime();
                     game.isMultiplayer = cats.indexOf('Multi-player') >= 0;
                     game.isCoop = cats.indexOf('Co-op') >= 0;
