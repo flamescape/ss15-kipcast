@@ -158,6 +158,9 @@ header input {
   flex-grow: 1;
   overflow-y: scroll;
 }
+.titlecard{
+    width: 100%;
+}
 
 .game {
     flex-grow: 1;
