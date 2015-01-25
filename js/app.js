@@ -92,10 +92,32 @@ angular.module('app', ['ngRoute', 'steam', 'angular-extend-promises', 'progress'
         p.steamId = null;
         p.steamIdInput = '';
         
+        p.errors = [];
+        p.addError = function(err){
+            p.errors.push(err);
+            $timeout(function(){
+                p.errors.shift();
+            }, 3000);
+        };
+        
         p.calcSteamId = function($event){
-            steam.getId64(p.steamIdInput).then(function(id){
-                p.steamId = id;
-                $location.path('/id/'+id);
+            steam.getProfileData(p.steamIdInput).then(function(profile){
+                if (!profile.steamID64) {
+                    throw new Error('SteamID64 not found');
+                }
+                
+                if (profile.privacyMessage && profile.privacyMessage.content) {
+                    return p.addError(profile.privacyMessage.content);
+                }
+                
+                if (profile.privacyState && profile.privacyState == "private") {
+                    return p.addError("Sorry, this profile is private");
+                }
+                
+                p.steamId = profile.steamID64;
+                $location.path('/id/'+profile.steamID64);
+            }).catch(function(){
+                p.addError("Sorry, steam profile not found");
             });
         };
         

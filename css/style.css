@@ -783,6 +783,16 @@ background-color: #2D6531;
     left: 0;
 }
 
+.error {
+    background: red;
+    padding: 10px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 20px;
+    color: #FCFCEE;
+    width: 73%;
+    margin: 20px auto;
+}
+
 /*
 @media screen and (max-device-width: 800px) {
   html { background: url(img/ibbobb.png) #000 no-repeat center center fixed; }
