@@ -1,7 +1,7 @@
 
 angular.module('app', ['ngRoute', 'steam', 'angular-extend-promises'])
 
-    .config(function($routeProvider){
+    .config(function($routeProvider, $compileProvider){
         $routeProvider
             .when('/', {
                 templateUrl: 'partials/prompt.html',
@@ -13,6 +13,8 @@ angular.module('app', ['ngRoute', 'steam', 'angular-extend-promises'])
             })
             .otherwise('/')
         ;
+        
+        $compileProvider.aHrefSanitizationWhitelist(/./);
     })
     
     .factory('friends', function(steam){
