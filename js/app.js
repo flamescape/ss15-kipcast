@@ -72,6 +72,10 @@ angular.module('app', ['ngRoute', 'steam', 'angular-extend-promises', 'progress'
         sv.getNumFriendsSelected = function(){
             return selectedFriends.length;
         };
+
+        sv.getSelectedFriends = function(){
+            return selectedFriends;
+        };
         
         sv.flyoutExpanded = false;
         sv.toggleFlyout = function(){
@@ -142,6 +146,18 @@ angular.module('app', ['ngRoute', 'steam', 'angular-extend-promises', 'progress'
             return steam.getId64(steamid).then(function(steamid){
                 $location.path("/id/"+steamid);
             });
+        };
+
+        p.getNames = function(){
+            var names = friends.getSelectedFriends().map(function(f){
+                return f.name;
+            });
+            names.unshift(p.profile.steamID);
+            var lastName = names.pop();
+            var t = names.reduce(function(str, name, idx){
+                return str += (idx == names.length-1) ? (name + ' & ' ) : (name + ', ')
+            }, '');
+            return t + lastName;
         };
         
     })

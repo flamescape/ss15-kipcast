@@ -5,7 +5,7 @@
 
 
     <!-- <img ng-src="{{p.profile.avatarMedium}}"/> -->
-    <h2>{{p.profile.steamID}}'s Games</h2>
+    <h2>{{p.getNames()}}'s Games</h2>
     
     <h3 class="titlecard">Multiplayer</h3>
     <a ng-repeat="g in gc.games|filter:gc.isGameOwnedByAllFriends | isSingleplayerGame:1" href="steam://rungameid/{{g.appID}}" class="game">
