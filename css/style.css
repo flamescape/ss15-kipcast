@@ -72,15 +72,6 @@ header input {
     padding-left: 10px;
 }
 
-#newprogress {
-    height: 10px;
-    width: calc(100% - 400px);
-    position: absolute;
-    top: 52px;
-    right: 0px;
-    background-color: red;
-}
-
 #menu {
     background: none;
     border: none;
@@ -92,7 +83,7 @@ header input {
 header  nav {
     position: absolute;
     background: linear-gradient(to bottom, rgba(17,25,35,0.5) 0%,rgba(17,25,35,.90) 15%,rgba(17,25,35,95) 100%); 
-    top: 72px;
+    top: 62px;
     right: 0px;
     
 }
@@ -126,6 +117,12 @@ header nav li:hover {
     position: relative;
 }
 
+.info-content {
+    padding: 0 30px 15px 30px;
+    max-height: 80vh;
+    overflow-y: scroll;
+}
+
 #information > button {
     display: block;
     position: absolute;
@@ -136,16 +133,14 @@ header nav li:hover {
 }
 
 #information > div{
-    margin: 10px auto;
-    padding: 0 30px 15px 30px;
     color: #fcfcee;
     font-family:'Oswald', sans-serif;
     font-size: 20px;
-    background-color: rgba( 205, 241, 255, 0.15);
+    background-color: rgba(55, 84, 108, 0.96);
     border-radius: 16px;
     box-shadow: 
-        inset 0px 0px 47px 6px rgba(255,255,255,0.1), 
-        1px 1px 15px 0px rgba(0, 0, 0, 0.3);
+        inset 0px 0px 47px 6px rgba(255,255,255,0.1),
+        2px 2px 15px 0px rgba(0, 0, 0, 1);
 }
 
 #information > div h2 {
@@ -159,6 +154,25 @@ header nav li:hover {
 
 #information > div p {
     text-shadow: 1px 1px 1px black;
+}
+
+.closebtn {
+    background: none;
+    border: none;
+    font-size: 2em;
+    color: #fcfcee;
+    text-shadow:
+        0 1px 0 #777, 
+        0 2px 0 #676767, 
+        0 3px 0 #666, 
+        0 4px 0 #565656, 
+        0 6px 1px rgba(0, 0, 0, .1), 
+        0 0 5px rgba(0, 0, 0, .1), 
+        0 1px 3px rgba(0, 0, 0, .3), 
+        0 3px 5px rgba(0, 0, 0, .2), 
+        0 5px 10px rgba(0, 0, 0, .25), 
+        0 10px 10px rgba(0, 0, 0, .2), 
+        0 20px 20px rgba(0, 0, 0, .15);
 }
 
 .team {
@@ -314,7 +328,7 @@ header nav li:hover {
   padding: 0 5px;
 }
 
-#games h2 {
+#games h2, #information > div h2 {
     font-size: 45px;
     width: 85%;
     font-family:'Grand Hotel', cursive;
