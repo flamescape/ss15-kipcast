@@ -130,8 +130,16 @@ angular.module('app', ['ngRoute', 'steam', 'angular-extend-promises'])
             return friends.getSelectedFriendsWithGame(g.appID).length === friends.getNumFriendsSelected();
         };
         gc.mpCoopFilter = function(g){
-            console.log(g.info);
-            return g.info.isMultiplayer == true;// || g.info.isCoop === true;
+            if(typeof g.info != 'undefined'){            
+                return g.info.isMultiplayer == true || g.info.isCoop == true;
+            }
+            return false;
+        }
+        gc.spOnlyFilter = function(g){
+            if(typeof g.info != 'undefined'){            
+                return g.info.isMultiplayer == false && g.info.isCoop == false;
+            }
+            return false;
         }
         
         gc.updateGames().then(gc.fetchGameInfo);
