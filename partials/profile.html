@@ -5,10 +5,10 @@
             <p>X</p>
         </header>
         <div id="wrapper">
-            <div id="friends" ng-class="{expanded: fc.isExpanded}" ng-controller="FriendsCtrl as fc" ng-include="'partials/friends.html'"></div>
+            <div id="friends" class="scrollable" ng-class="{expanded: fc.isExpanded}" ng-controller="FriendsCtrl as fc" ng-include="'partials/friends.html'"></div>
             <div id="friends-expand">
                 <button ng-click="fc.isExpanded = !fc.isExpanded">></button>
             </div>
-            <div  id="games" ng-controller="GamesCtrl as gc" ng-include="'partials/games.html'"></div>
+            <div  id="games" class="scrollable" ng-controller="GamesCtrl as gc" ng-include="'partials/games.html'"></div>
         </div>
     </div>

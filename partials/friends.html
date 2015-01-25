@@ -5,7 +5,7 @@
                     <img src="img/spinner.svg" alt="loading">
                     <h3>Loading Friends...</h3>
                 </div>
-                <div id="friends-list">
+                <div id="friends-list" class="scrollable">
                     <div ng-repeat="f in fc.friends|filter:{name:fc.filter}" class="friend {{f.isIngame ? 'ingame' : f.isOnline ? 'online' : 'offline'}}" >
                         <img src="{{f.avatar}}" width="42" height="42" class="friend-ava "/>
                         <div class="friend-text">
@@ -14,8 +14,8 @@
                         </div>
                     </div>
                 </div>
-                <div id="chat">
-                    <div id="chatwindow">
+                <div id="chat" class="scrollable">
+                    <div id="chatwindow" class="scrollable">
                         <p>This is</p>
                         <p>Some good</p>
                         <p>Chat</p>
