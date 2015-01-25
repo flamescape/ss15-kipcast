@@ -17,4 +17,4 @@
     <a ng-repeat="g in gc.games|filter:gc.isGameOwnedByAllFriends | isSingleplayerGame" href="steam://rungameid/{{g.appID}}" class="game singleplayer-game">
         <img src="{{g.logo}}" width="184" height="69" class="game" alt="{{g.name}} logo" ng-attr-title="{{g.name}}"/>        
     </a>
-    <p class="error" ng-if="p.getNumFriendsSelected() > 0 && !(gc.games|filter:gc.isGameOwnedByAllFriends|isSingleplayerGame:1).length">You have no single-player games in common with these friends.</p>
+    <p class="error" ng-if="p.getNumFriendsSelected() > 0 && !(gc.games|filter:gc.isGameOwnedByAllFriends|isSingleplayerGame).length">You have no single-player games in common with these friends.</p>
