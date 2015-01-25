@@ -7,7 +7,7 @@
         <div id="wrapper">
             <div id="friends" ng-class="{expanded: fc.isExpanded}" ng-controller="FriendsCtrl as fc" ng-include="'partials/friends.html'"></div>
             <div id="friends-expand">
-                <button ng-click="fc.isExpanded = !fc.isExpanded">></button>
+                <button ng-click="p.toggleFriends()">&rarr;</button>
             </div>
             <div id="games" ng-controller="GamesCtrl as gc" ng-include="'partials/games.html'"></div>
         </div>
