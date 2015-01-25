@@ -173,7 +173,9 @@ angular.module('app', ['ngRoute', 'steam', 'angular-extend-promises', 'progress'
 
         p.getNames = function(){
             if (!p.profile) return 'My';
-            var names = friends.getSelectedFriends().map(function(f){
+            var names = friends.getSelectedFriends().filter(function(f){
+                return !!f.games;
+            }).map(function(f){
                 return f.name;
             });
             names.unshift(p.profile.steamID);
