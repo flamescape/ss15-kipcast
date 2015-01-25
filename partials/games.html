@@ -1,15 +1,27 @@
-    <div ng-show="p.curInfoPage">
-        <div ng-show="p.curInfoPage == 'about'">
-            <h1>About Us</h1>
+    <div id="information" ng-show="p.curInfoPage">
+        <div class="" ng-show="p.curInfoPage == 'about'">
+            <h2>What is this?</h2>
+            <p>If you've ever tried to choose a game with a group of friends on Steam, then you may be able to relate to our frustration. It usually goes something like this:</p>
+            <div class="dialog">
+                <p><span class="john">John:</span>Let's all play a game together!</p>
+                <p><span class="björn">Björn:</span>Okay, how about Space Engineers?</p>
+                <p><span class="gareth">Gareth:</span>I don't have that game. Let's play Terraria instead.</p>
+                <p><span class="john">John:</span>I'm waiting for that to go on sale before I buy it.</p>
+                <p><span class="björn">Björn:</span>So what multiplayer games do we all own then?</p>
+                <p><span class="gareth">Gareth:</span>I don't know, I wish Steam had the ability to tell us!</p>
+            </div>
+            <p>Alleviate your troubles with Friendly Games. Our app allows you to enter a Steam profile and select a set of your friends so that you can instantly determine which multiplayer games you have in common with them.</p>
         </div>
         <div ng-show="p.curInfoPage == 'team'">
-            <h1>Team</h1>
+            <h2>Team</h2>
         </div>
         <div ng-show="p.curInfoPage == 'credits'">
-            <h1>Credits</h1>
+            <h2>Credits</h2>
+            <h3>Resources</h3>
+            <h3>Programs</h3>
         </div>
         <div ng-show="p.curInfoPage == 'devlog'">
-            <h1>Development Log</h1>
+            <h2>Development Log</h2>
         </div>
     </div>
 

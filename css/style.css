@@ -83,8 +83,61 @@ header input {
 header  nav {
     position: absolute;
     background-color: pink;
-    top: 62px;
+    top: 72px;
     right: 10px;
+}
+
+#information {
+    width: 100%;
+}
+
+#information > div{
+    max-width: 660px;
+    margin: 10px auto;
+    padding: 0 30px 15px 30px;
+    color: #fcfcee;
+    font-family:'Oswald', sans-serif;
+    font-size: 20px;
+    background-color: rgba( 205, 241, 255, 0.1);
+    border-radius: 16px;
+}
+
+#information > div h2 {
+    margin: 0;
+    width: 100%;
+}
+
+#information > div > p {
+    margin: 10px 0;
+}
+
+#information > div p {
+    text-shadow: 1px 1px 1px black;
+}
+
+.dialog {
+    font-family: monospace;
+    font-size: 16px;
+    max-width: 450px;
+    margin: auto;
+    padding-left: 10px;
+    border-left: 5px solid rgba(255, 255, 255, 0.5);
+}
+
+.john {
+    color: #81ECFF;
+}
+
+.gareth {
+    color: #46E55A;
+}
+
+.björn {
+    color: #FFA032;
+}
+
+.dialog p {
+    margin: 4px 0;
 }
 
 #wrapper {
@@ -160,11 +213,9 @@ header  nav {
 }
 
 #friends-expand button {
+    background-color: rgba(17, 25, 35, 0.5);
     height: 100px;
     width: 25px;
-
-    /*background: linear-gradient(to left, rgba(69,83,104,0.5) 0%,rgba(33,62,94,0.5) 39%,rgba(14,42,73,0.5) 53%,rgba(17,25,35,0.5) 100%);*/
-    background: linear-gradient(to right, rgba(17,25,35,0.5) 0%,rgba(34,45,56,0.5) 51%,rgba(17,25,35,0.5) 100%); 
     border: none;
     color: white;
     font-size: 18px;
@@ -542,12 +593,12 @@ header  nav {
 
 .scrollable::-webkit-scrollbar
 {    
-    width: 5px;
+    width: 7px;
     visibility:hidden;
 }
 .scrollable:hover::-webkit-scrollbar
 {    
-    width: 5px;     
+    width: 7px;     
     visibility:visible;
 }
 
