@@ -31,6 +31,8 @@
     
     <div class="modal-wrapper" ng-show="p.curInfoPage">
         <div id="information">
+            <button ng-click="p.curInfoPage = null">Close</button>
+        
             <div class="" ng-show="p.curInfoPage == 'about'">
                 <h2>What is this?</h2>
                 <p>If you've ever tried to choose a game with a group of friends on Steam, then you may be able to relate to our frustration. It usually goes something like this:</p>
@@ -52,7 +54,7 @@
                     <a href="/#/id/76561198001860563"><img src="/img/bjorn.png" width="128" height="128" alt="picture of Björn" title="Björn"></a>
                     <a href="/#/id/76561197961662746"><img src="/img/john.png" width="128" height="128" alt="picture of John" title="John"></a>
                 </div>
-                <p>If you'd like to chat with us, we've got a room set up on <a href="https://gitter.im/staticshowdown/kipcast">Gitter</a>!</p>
+                <p>If you'd like to chat with us, we've got a room set up on <a href="https://gitter.im/staticshowdown/kipcast" target="_blank">Gitter</a>!</p>
                 
             </div>
             <div ng-show="p.curInfoPage == 'credits'">
