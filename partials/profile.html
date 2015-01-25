@@ -11,7 +11,6 @@
                     <li ng-click="p.showInfoPage('about')">What's This?
                     <li ng-click="p.showInfoPage('team')">Team
                     <li ng-click="p.showInfoPage('devlog')">Development Log
-                    <li ng-click="p.showInfoPage('credits')">Credits
                 </ul>
             </nav>
             <div class="progressbar" ng-class="{'pbDone':p.progressPct == '100%', pb:p.progressPct != '100%'}"><div ng-style="{width:p.progressPct}"></div></div>
@@ -58,13 +57,6 @@
                         <a href="/#/id/76561197961662746"><img src="/img/john.png" width="128" height="128" alt="picture of John" title="John"></a>
                     </div>
                     <p>If you'd like to chat with us, we've got a room set up on <a href="https://gitter.im/staticshowdown/kipcast" target="_blank">Gitter</a>!</p>
-                </div>
-            </div>
-            <div ng-show="p.curInfoPage == 'credits'">
-                <h2>Credits</h2>
-                <div class="info-content scrollable">
-                    <h3>Resources</h3>
-                    <h3>Programs</h3>
                 </div>
             </div>
             <div ng-show="p.curInfoPage == 'devlog'">
