@@ -239,6 +239,8 @@ header nav li:hover {
     justify-content: flex-start;
     min-width: 400px;
     background-color: rgba(17, 25, 35, 0.5);
+    transition: max-width 0.5s ease, min-width 0.5s ease;
+    -webkit-transition: max-width 0.5s ease, min-width 0.5s ease;
 }
 
 #friends-filter {
