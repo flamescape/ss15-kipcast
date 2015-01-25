@@ -5,15 +5,16 @@
 
 
     <!-- <img ng-src="{{p.profile.avatarMedium}}"/> -->
-    <h2>{{p.getNames()}}'s Games</h2>
+    <h2>{{p.getNames()}} Games</h2>
     
     <h3 class="titlecard">Multiplayer</h3>
     <a ng-repeat="g in gc.games|filter:gc.isGameOwnedByAllFriends | isSingleplayerGame:1" href="steam://rungameid/{{g.appID}}" class="game">
         <img src="{{g.logo}}" width="184" height="69" class="game" alt="{{g.name}} logo" ng-attr-title="{{g.name}}"/>        
     </a>
+    <p class="error" ng-if="p.getNumFriendsSelected() > 0 && !(gc.games|filter:gc.isGameOwnedByAllFriends|isSingleplayerGame:1).length">You have no multi-player games in common with these friends.</p>
     
     <h3 class="titlecard notmp">Singleplayer only</h3>
     <a ng-repeat="g in gc.games|filter:gc.isGameOwnedByAllFriends | isSingleplayerGame" href="steam://rungameid/{{g.appID}}" class="game singleplayer-game">
         <img src="{{g.logo}}" width="184" height="69" class="game" alt="{{g.name}} logo" ng-attr-title="{{g.name}}"/>        
     </a>
-    
+    <p class="error" ng-if="p.getNumFriendsSelected() > 0 && !(gc.games|filter:gc.isGameOwnedByAllFriends|isSingleplayerGame:1).length">You have no single-player games in common with these friends.</p>
