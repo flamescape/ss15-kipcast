@@ -24,7 +24,7 @@ angular.module('app', ['ngRoute', 'steam', 'angular-extend-promises'])
                 f.selected = true;
                 selectedFriends.push(f);
                 if (!f.gamesPromise) {
-                    console.log('fetching games of', f);
+                    // fetch games belonging to friend (f)
                     f.gamesPromise = steam.getId64(f.profileUrl).then(function(steamid){
                         return steam.getGames(steamid);
                     }).then(function(games){
@@ -49,10 +49,14 @@ angular.module('app', ['ngRoute', 'steam', 'angular-extend-promises'])
         
         sv.getSelectedFriendsWithGame = function(appid){
             return selectedFriends.filter(function(sf){
-                return !!sf.games.find(function(g){
+                return !sf.games || !!sf.games.some(function(g){
                     return g.appID === appid;
                 });
             });
+        };
+        
+        sv.getNumFriendsSelected = function(){
+            return selectedFriends.length;
         };
         
         return sv;
@@ -113,13 +117,16 @@ angular.module('app', ['ngRoute', 'steam', 'angular-extend-promises'])
         };
 
         gc.fetchGameInfo = function(games){
-            console.log('fetching tags for', games);
-            
+            // fetching categories
             $q.when(games).map(function(game){
                 return steam.getGameInfo(game.appID).then(function(info){
                     game.info = info;
                 });
             }, {concurrency:6});
+        };
+        
+        gc.isGameOwnedByAllFriends = function(g){
+            return friends.getSelectedFriendsWithGame(g.appID).length === friends.getNumFriendsSelected();
         };
         
         gc.updateGames().then(gc.fetchGameInfo);

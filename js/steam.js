@@ -54,7 +54,6 @@ angular.module('steam', ['yql', 'jsonp','firebase']).factory('steam', function($
             
             return yql("SELECT * FROM data.html.cssselect WHERE url='http://steamcommunity.com/profiles/"+id64+"/friends/' AND css='.friendBlock.persona'");
         }).then(function(data){
-            console.log('FRIENDS', data);
             var divs = data.data.query.results.results.div;
             if (!(divs instanceof Array)) {
                 divs = [divs];
@@ -93,7 +92,7 @@ angular.module('steam', ['yql', 'jsonp','firebase']).factory('steam', function($
                 }).toArray();
             });
         }).catch(function(err){
-            console.log('Second fallback failed. Uhoh!', err);
+            console.log('Fallback failed. Uhoh!', err);
         });
     };
 
@@ -110,7 +109,6 @@ angular.module('steam', ['yql', 'jsonp','firebase']).factory('steam', function($
         }).then(function(steamid){
             return yql("select * from xml where url='http://steamcommunity.com/profiles/"+steamid+"/games/?tab=all&xml=1'");
         }).then(function(data){
-            console.log('GAMES', data);
             var games = data.data.query.results.gamesList.games.game;
             if (!(games instanceof Array)) {
                 games = [games];
@@ -138,13 +136,11 @@ angular.module('steam', ['yql', 'jsonp','firebase']).factory('steam', function($
                     game.isMultiplayer = cats.indexOf('Multi-player') >= 0;
                     game.isCoop = cats.indexOf('Co-op') >= 0;
                     game.$save();
-                    console.log('CACHE updating', appid, game);
                     
                     return game;
                 });
             }
             
-            console.log('CACHE hit!');
             return game;
         });
     };

@@ -11,6 +11,8 @@
                         <div class="friend-text">
                             <p class="friend-name">{{f.name}}</p>
                             <p class="friend-status"><i>{{f.online}}</i></p>
+                            
+                            <p ng-if="f.gamesPromise && !f.games">Loading games... <img src="img/spinner.svg" alt="loading"></p>
                         </div>
                     </div>
                 </div>
