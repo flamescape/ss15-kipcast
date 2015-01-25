@@ -5,7 +5,7 @@ angular.module('progress', ['angular-extend-promises'])
         
         function emit() {
             $rootScope.$emit('progressUpdate', {pos: sv.pos, max: sv.max});
-            console.log('progressUpdate', Math.round((sv.pos/sv.max) * 100, 1) + '%');
+            //console.log('progressUpdate', Math.round((sv.pos/sv.max) * 100, 1) + '%');
         }
         
         var sv = function(p){
