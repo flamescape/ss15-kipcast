@@ -66,7 +66,6 @@ angular.module('app', ['ngRoute', 'steam', 'angular-extend-promises'])
             });
         };
 
-        
         gc.fetchGameInfo = function(games){
             console.log('fetching tags for', games);
             
@@ -85,6 +84,7 @@ angular.module('app', ['ngRoute', 'steam', 'angular-extend-promises'])
         var fc = this;
         
         fc.steamId = $routeParams.steamid;
+        fc.selectedFriends = [];
         fc.isExpanded = false;
         
         $rootScope.$on('toggleFriends', function(){
@@ -101,11 +101,20 @@ angular.module('app', ['ngRoute', 'steam', 'angular-extend-promises'])
                 fc.loadingFriends = false;
             });
         };
-
-        fc.toggleSelect = function(userid){
-            console.log(userid);
-            //fc.selected = 
-        }
+        
+        fc.selectFriend = function(f){
+            if (!f.selected) {
+                f.selected = true;
+                fc.selectedFriends.push(f);
+            } else {
+                f.selected = false;
+                var idx = fc.selectedFriends.indexOf(f);
+                if (idx >= 0) {
+                    fc.selectedFriends.splice(idx, 1);
+                }
+            }
+            console.log('SELECTED FRIENDS', fc.selectedFriends);
+        };
         
         fc.updateFriends();
     })

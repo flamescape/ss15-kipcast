@@ -126,7 +126,11 @@ angular.module('steam', ['yql', 'jsonp','firebase']).factory('steam', function($
         return game.$loaded().then(function(){
             if (!game || !game.lastUpdated) {
                 return yql("SELECT * FROM data.html.cssselect WHERE url='http://store.steampowered.com/app/"+appid+"' AND css='#category_block .game_area_details_specs a'").then(function(data){
-                    var cats = data.data.query.results.results.a.map(function(a){
+                    var cats = data.data.query.results.results.a;
+                    if (!(cats instanceof Array)) {
+                        cats = [cats];
+                    }
+                    cats = cats.map(function(a){
                         return a.content;
                     });
                     
