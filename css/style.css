@@ -380,6 +380,45 @@ header h1 {
     color: #898989;
 }
 
+.scrollable{
+
+}
+.scrollable:hover{
+    
+}
+
+.scrollable::-webkit-scrollbar-track
+{    
+    visibility:hidden;
+}
+.scrollable:hover::-webkit-scrollbar-track{   
+    visibility:visible;
+}
+
+.scrollable::-webkit-scrollbar
+{    
+    width: 12px;
+    visibility:hidden;
+}
+.scrollable:hover::-webkit-scrollbar
+{    
+    width: 12px;     
+    visibility:visible;
+}
+
+.scrollable::-webkit-scrollbar-thumb
+{   
+    visibility:hidden;
+   
+}
+.scrollable:hover::-webkit-scrollbar-thumb
+{    
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-color: #353645;
+    visibility:visible; 
+}
+
 /*
 @media screen and (max-device-width: 800px) {
   html { background: url(img/ibbobb.png) #000 no-repeat center center fixed; }
