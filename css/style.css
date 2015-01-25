@@ -829,6 +829,12 @@ background-color: #2D6531;
     margin: 20px auto;
     border-radius: 16px;
     box-shadow: 1px 1px 16px 0px black;
+    display: flex;
+}
+
+.error:before {
+    content: url(/img/small-alert.png);
+    margin-right: 10px;
 }
 
 /*
