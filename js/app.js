@@ -129,6 +129,10 @@ angular.module('app', ['ngRoute', 'steam', 'angular-extend-promises'])
         gc.isGameOwnedByAllFriends = function(g){
             return friends.getSelectedFriendsWithGame(g.appID).length === friends.getNumFriendsSelected();
         };
+        gc.mpCoopFilter = function(g){
+            console.log(g.info);
+            return g.info.isMultiplayer == true;// || g.info.isCoop === true;
+        }
         
         gc.updateGames().then(gc.fetchGameInfo);
         
