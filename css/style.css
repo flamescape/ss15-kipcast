@@ -715,6 +715,10 @@ header nav li:hover {
     background-color: #0A5A78;
 }
 
+.info-content:hover::-webkit-scrollbar-thumb {
+    background-color: #21A8A8;
+}
+
 .progressbar {
         height: 10px;
     width: calc(100% - 400px);
