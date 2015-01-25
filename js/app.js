@@ -16,6 +16,17 @@ angular.module('app', ['ngRoute', 'steam', 'angular-extend-promises'])
         
         $compileProvider.aHrefSanitizationWhitelist(/./);
     })
+
+    .filter('isSingleplayerGame', function(){
+        return function(games, inverse){
+            return !!games && games.filter(function(game){
+                if (!game || !game.info) return false;
+                
+                var res = !game.info.isMultiplayer && !game.info.isCoop;
+                return inverse ? !res : res;
+            });
+        };
+    })
     
     .factory('friends', function(steam){
         var sv = {};
@@ -131,18 +142,6 @@ angular.module('app', ['ngRoute', 'steam', 'angular-extend-promises'])
         gc.isGameOwnedByAllFriends = function(g){
             return friends.getSelectedFriendsWithGame(g.appID).length === friends.getNumFriendsSelected();
         };
-        gc.mpCoopFilter = function(g){
-            if(typeof g.info != 'undefined'){            
-                return g.info.isMultiplayer == true || g.info.isCoop == true;
-            }
-            return false;
-        }
-        gc.spOnlyFilter = function(g){
-            if(typeof g.info != 'undefined'){            
-                return g.info.isMultiplayer == false && g.info.isCoop == false;
-            }
-            return false;
-        }
         
         gc.updateGames().then(gc.fetchGameInfo);
         
