@@ -22,6 +22,7 @@ angular.module('progress', ['angular-extend-promises'])
         sv.reset = function(){
             sv.pos = 0;
             sv.max = 0;
+            promises = [];
         };
         
         sv.reset();
