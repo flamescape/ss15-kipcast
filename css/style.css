@@ -100,7 +100,7 @@ header nav li {
     text-shadow: 1px 1px 1px blask;
     border-bottom: 1px solid rgba(255, 255, 255, 0.5);
     cursor: pointer;
-    padding: 5px 20px;
+    padding: 5px 10px;
 }
 
 header nav ul li:last-child {
