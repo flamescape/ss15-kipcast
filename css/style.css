@@ -576,12 +576,25 @@ header nav li:hover {
     bottom: 0;
     left: 0;
     padding: 20px 20px;
+}
+
+#vendors img {
     opacity: 0.4;
     transition: opacity 0.5s ease;
 }
 
-#vendors:hover {
+#vendors img:hover {
     opacity: 1;
+}
+
+#notchrome {
+    height: 100px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: red;
+    z-index: 99;
 }
 
 .titlecard {
