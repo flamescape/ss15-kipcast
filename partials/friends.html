@@ -1,5 +1,7 @@
                 <div id="friends-filter" class="">
-                    <input placeholder="John" type="text" ng-model="fc.filter" />
+                    <input id="filterInput" placeholder="John" type="text" ng-model="fc.filter" />
+                    <button ng-click="fc.clearFilter()">x</button>
+                    <button ng-click="fc.clearSelection()">Deselect All</button>
                 </div>
                 <div class="loading" ng-show="fc.loadingFriends">
                     <img src="img/spinner.svg" alt="loading">

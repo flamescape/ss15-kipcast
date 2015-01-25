@@ -241,6 +241,12 @@ angular.module('app', ['ngRoute', 'steam', 'angular-extend-promises', 'progress'
             });
         };
         
+        fc.clearFilter = function(){
+            fc.filter = '';
+            $('#filterInput').focus();
+        };
+        
+        fc.clearSelection = friends.clearSelection;
         fc.selectFriend = friends.select;
         
         friends.clearSelection();
