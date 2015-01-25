@@ -55,7 +55,11 @@ angular.module('steam', ['yql', 'jsonp','firebase']).factory('steam', function($
             return yql("SELECT * FROM data.html.cssselect WHERE url='http://steamcommunity.com/profiles/"+id64+"/friends/' AND css='.friendBlock.persona'");
         }).then(function(data){
             console.log('FRIENDS', data);
-            return data.data.query.results.results.div.map(function(div){
+            var divs = data.data.query.results.results.div;
+            if (!(divs instanceof Array)) {
+                divs = [divs];
+            }
+            return divs.map(function(div){
                 return {
                     name: div.div[1].p.content.trim(),
                     profileUrl: div.a.href,
@@ -107,7 +111,11 @@ angular.module('steam', ['yql', 'jsonp','firebase']).factory('steam', function($
             return yql("select * from xml where url='http://steamcommunity.com/profiles/"+steamid+"/games/?tab=all&xml=1'");
         }).then(function(data){
             console.log('GAMES', data);
-            return data.data.query.results.gamesList.games.game;
+            var games = data.data.query.results.gamesList.games.game;
+            if (!(games instanceof Array)) {
+                games = [games];
+            }
+            return games;
         });
     };
     
