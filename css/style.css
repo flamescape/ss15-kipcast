@@ -581,7 +581,7 @@ header  nav {
     height: 10px;
     width: 0;
     margin: auto;
-
+    transition: background-color 1s ease;
 }
 .pb > div{
 background-color: #2D6531;
