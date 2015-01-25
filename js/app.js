@@ -248,6 +248,7 @@ angular.module('app', ['ngRoute', 'steam', 'angular-extend-promises', 'progress'
         
         fc.clearSelection = friends.clearSelection;
         fc.selectFriend = friends.select;
+        fc.getNumFriendsSelected = friends.getNumFriendsSelected;
         
         friends.clearSelection();
         fc.updateFriends();

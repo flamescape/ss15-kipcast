@@ -109,16 +109,25 @@ angular.module('steam', ['yql', 'jsonp', 'firebase', 'progress', 'angular-storag
                 }
                 return $.find('.friendBlock.persona').map(function(){
                     var div = angular.element(this);
-                    return {
-                        name: div.find('.friendBlockContent').clone().children().remove().end().text().trim(),
+                    var g = {
                         profileUrl: div.find('a:first').attr('href'),
-                        online: div.find('.friendSmallText').text().trim(),
                         avatar: div.find('div > img').attr('src').replace(/.jpg$/, '_full.jpg'),
                         isIngame: !!div.find('.in-game').length,
                         isOnline: !!div.find('.online').length,
                         isOffline: !!div.find('.offline').length,
                         _html: div
                     };
+                    g.name = div.find('.friendBlockContent').clone().children().remove().end().text().trim();
+                    if (g.isIngame) {
+                        g.online = div.find('.friendSmallText > span')
+                            .clone()
+                            .find('span').remove().end()
+                            .find('br').text(': ').end()
+                            .text().trim();
+                    } else {
+                        g.online = div.find('.friendSmallText').text().trim();
+                    }
+                    return g;
                 }).toArray();
             });
         }).catch(function(err){

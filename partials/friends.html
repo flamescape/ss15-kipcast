@@ -1,7 +1,7 @@
                 <div id="friends-filter" class="">
                     <input id="filterInput" placeholder="John" type="text" ng-model="fc.filter" />
                     <button id="clearfilter" ng-click="fc.clearFilter()">✖</button>
-                    <button id="deselect" ng-click="fc.clearSelection()"><img src="/img/trash.svg" alt="trash" height="24"></button>
+                    <button ng-show="fc.getNumFriendsSelected()>0" id="deselect" ng-click="fc.clearSelection()"><img title="Deselect all friends" src="/img/trash.svg" alt="trash" height="24"></button>
                 </div>
                 <div class="loading" ng-show="fc.loadingFriends">
                     <img src="img/spinner.svg" alt="loading">
