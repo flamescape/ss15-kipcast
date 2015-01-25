@@ -225,6 +225,10 @@ header  nav {
     border-radius: 8px;
 }
 
+.singleplayer-game {
+    opacity: 0.2;
+}
+
 .mainpage {
     position: fixed;
     top: 0; right: 0; bottom: 0; left: 0;
