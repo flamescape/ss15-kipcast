@@ -73,6 +73,11 @@ angular.module('app', ['ngRoute', 'steam', 'angular-extend-promises', 'progress'
             return selectedFriends.length;
         };
         
+        sv.flyoutExpanded = false;
+        sv.toggleFlyout = function(){
+            sv.flyoutExpanded = !sv.flyoutExpanded;
+        };
+        
         return sv;
     })
 
@@ -105,14 +110,12 @@ angular.module('app', ['ngRoute', 'steam', 'angular-extend-promises', 'progress'
         
     })
     
-    .controller('ProfileCtrl', function($routeParams, steam, $rootScope, progress, $location){
+    .controller('ProfileCtrl', function($routeParams, steam, $rootScope, progress, $location, friends){
         var p = this;
         
         p.steamId = 'http://steamcommunity.com/profiles/' + $routeParams.steamid;
         
-        p.toggleFriends = function(){
-            $rootScope.$emit('toggleFriends');
-        };
+        p.friends = friends;
         
         progress.reset();
         p.progressPct = '0%';
