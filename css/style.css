@@ -171,10 +171,11 @@ header input {
 }
 
 .game img:hover {
-    border: solid 1px orange;   
+    border-color: orange;
 }
 
 .game img {
+    border: 1px solid transparent;
     border-radius: 8px;
 }
 
