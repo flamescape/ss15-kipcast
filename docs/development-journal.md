@@ -53,4 +53,7 @@ It is snowing at John and Björns house. John makes a great joke: "What is this,
 ## Sunday
 
 ### 0:23:46
-Björn showed Gareth a cat gif, Gareth was overjoyed and needed some 'alone time' for a moment.
+Björn showed Gareth a cat gif, Gareth was overjoyed and needed some 'alone time'.
+
+### 0:54:05
+Gareth is distracted researching ninja turtles, all other team members sigh...
