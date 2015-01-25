@@ -101,6 +101,11 @@ angular.module('app', ['ngRoute', 'steam', 'angular-extend-promises'])
                 fc.loadingFriends = false;
             });
         };
+
+        fc.toggleSelect = function(userid){
+            console.log(userid);
+            //fc.selected = 
+        }
         
         fc.updateFriends();
     })
