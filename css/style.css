@@ -497,6 +497,18 @@ header input {
     background-color: #0A5A78;
 }
 
+.progressbar {
+    height: 20px;
+    width: 100%;
+}
+
+.progressbar > div {
+    background: #46C224;
+    height: 20px;
+    width: 0;
+    margin: auto;
+}
+
 /*
 @media screen and (max-device-width: 800px) {
   html { background: url(img/ibbobb.png) #000 no-repeat center center fixed; }

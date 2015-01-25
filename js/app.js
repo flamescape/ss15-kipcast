@@ -114,6 +114,12 @@ angular.module('app', ['ngRoute', 'steam', 'angular-extend-promises', 'progress'
             $rootScope.$emit('toggleFriends');
         };
         
+        p.progressPct = '10%';
+        
+        $rootScope.$on('progressUpdate', function(evt, prog){
+            p.progressPct = Math.round((prog.pos/prog.max) * 100) + '%';
+        });
+        
     })
     
     .controller('GamesCtrl', function($routeParams, $q, steam, friends){
