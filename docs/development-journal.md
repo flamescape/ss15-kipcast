@@ -49,3 +49,8 @@ John wakes up and checks the commit log. He is puzzled that the only updated fil
 
 ### 12:33:45
 It is snowing at John and Björns house. John makes a great joke: "What is this, Static Showdown or Static _SNOWDOWN_??". High fives were exchanged. Gareth was sour that it was not snowing at his house.
+
+## Sunday
+
+### 0:23:46
+Björn showed Gareth a cat gif, Gareth was overjoyed and needed some 'alone time' for a moment.
