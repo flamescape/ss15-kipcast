@@ -19,9 +19,11 @@ button {
 }
 
 header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(to bottom, rgba(69,83,104,0.5) 0%,rgba(33,62,94,0.5) 39%,rgba(14,42,73,0.5) 53%,rgba(17,25,35,0.5) 100%);
+    opacity: 1;
 }
 
 header h1 {
@@ -29,7 +31,7 @@ header h1 {
     text-align: left;
     font-family:'Grand Hotel', cursive;
     color: #fcfcee;
-    margin: 0;
+    margin: 0 0 0 60px;
     text-shadow:
         0 1px 0 #777, 
         0 2px 0 #676767, 
@@ -86,14 +88,18 @@ header h1 {
 }
 
 #chat {
-  background-color: pink;
+  background-color: rgba(17, 25, 35, 0.1);
   min-height: 200px;
+  padding-top: 10px;
 }
 
 #chatwindow {
-  height: 175px;
-  background-color: tomato;
-  overflow-y: scroll;
+    height: 175px;
+    background-color: #fcfcee;
+    opacity: .85;
+    margin: 0 auto;
+    width: 95%;
+    overflow-y: scroll;
 }
 
 #friends-expand {
