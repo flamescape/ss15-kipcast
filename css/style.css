@@ -61,6 +61,14 @@ header input {
     padding-left: 10px;
 }
 
+#menu {
+    background: none;
+    border: none;
+    color: #fcfcee;
+    font-size: 2em;
+    margin-right: 10px;
+}
+
 #wrapper {
   flex: 2;
   display: flex;
