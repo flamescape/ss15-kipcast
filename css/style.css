@@ -687,7 +687,8 @@ header nav li:hover {
     height: 10px;
     width: 0;
     margin: auto;
-    transition: background-color 1s ease;
+    transition: background-color 2s ease, width 0.5s ease;
+    -webkit-transition: background-color 2s ease, width 0.5s ease;
 }
 .pb > div{
 background-color: #2D6531;
