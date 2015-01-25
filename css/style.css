@@ -98,8 +98,11 @@ header  nav {
     color: #fcfcee;
     font-family:'Oswald', sans-serif;
     font-size: 20px;
-    background-color: rgba( 205, 241, 255, 0.1);
+    background-color: rgba( 205, 241, 255, 0.15);
     border-radius: 16px;
+    box-shadow: 
+        inset 0px 0px 47px 6px rgba(255,255,255,0.1), 
+        1px 1px 15px 0px rgba(0, 0, 0, 0.3);
 }
 
 #information > div h2 {
@@ -113,6 +116,34 @@ header  nav {
 
 #information > div p {
     text-shadow: 1px 1px 1px black;
+}
+
+.team {
+    display: flex;
+    justify-content: center;
+}
+
+.team img {
+    border-radius: 999px;
+    margin: 0 10px;
+}
+
+#information a:visited {
+    color: #fcfcee;
+}
+
+#information table {
+    font-size: 14px;
+    text-shadow: 1px 1px black;
+}
+
+#information table tr td:first-child {
+    font-family: monospace;
+    min-width: 115px;
+}
+
+#information table tr:nth-child(odd) {
+    background-color: rgba(81, 159, 190, 0.25);
 }
 
 .dialog {
