@@ -11,6 +11,7 @@ angular.module('app', ['ngRoute', 'steam', 'angular-extend-promises'])
                 templateUrl: 'partials/profile.html',
                 controller: 'ProfileCtrl as p'
             })
+            .otherwise('/')
         ;
     })
     
