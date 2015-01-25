@@ -560,11 +560,18 @@ header input {
     width: 100%;
 }
 
-.progressbar > div {
-    background: #46C224;
+.progressbar > div {    
     height: 20px;
     width: 0;
     margin: auto;
+}
+.pb > div{
+    background: blue;
+}
+
+.pbDone > div{
+    background: green;
+    
 }
 
 /*
