@@ -6,10 +6,10 @@
         </header>
         <div class="progressbar"><div ng-style="{width:p.progressPct}"></div></div>
         <div id="wrapper">
-            <div id="friends" class="scrollable" ng-class="{expanded: fc.isExpanded}" ng-controller="FriendsCtrl as fc" ng-include="'partials/friends.html'"></div>
+            <section id="friends" class="scrollable" ng-class="{expanded: fc.isExpanded}" ng-controller="FriendsCtrl as fc" ng-include="'partials/friends.html'"></section>
             <div id="friends-expand">
                 <button ng-click="p.toggleFriends()">▶</button>
             </div>
-            <div id="games" class="scrollable" ng-controller="GamesCtrl as gc" ng-include="'partials/games.html'"></div>
+            <section id="games" class="scrollable" ng-controller="GamesCtrl as gc" ng-include="'partials/games.html'"></section>
         </div>
     </div>
