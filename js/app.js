@@ -13,6 +13,50 @@ angular.module('app', ['ngRoute', 'steam', 'angular-extend-promises'])
             })
         ;
     })
+    
+    .factory('friends', function(steam){
+        var sv = {};
+        
+        var selectedFriends = [];
+        
+        sv.select = function(f){
+            if (!f.selected) {
+                f.selected = true;
+                selectedFriends.push(f);
+                if (!f.gamesPromise) {
+                    console.log('fetching games of', f);
+                    f.gamesPromise = steam.getId64(f.profileUrl).then(function(steamid){
+                        return steam.getGames(steamid);
+                    }).then(function(games){
+                        f.games = games;
+                    });
+                }
+            } else {
+                f.selected = false;
+                var idx = selectedFriends.indexOf(f);
+                if (idx >= 0) {
+                    selectedFriends.splice(idx, 1);
+                }
+            }
+        };
+        
+        sv.clearSelection = function(){
+            selectedFriends.forEach(function(sf){
+                sf.selected = false;
+            });
+            selectedFriends = [];
+        };
+        
+        sv.getSelectedFriendsWithGame = function(appid){
+            return selectedFriends.filter(function(sf){
+                return !!sf.games.find(function(g){
+                    return g.appID === appid;
+                });
+            });
+        };
+        
+        return sv;
+    })
 
     .controller('PromptCtrl', function(steam, $location, $timeout){
         var p = this;
@@ -52,7 +96,7 @@ angular.module('app', ['ngRoute', 'steam', 'angular-extend-promises'])
         
     })
     
-    .controller('GamesCtrl', function($routeParams, $q, steam){
+    .controller('GamesCtrl', function($routeParams, $q, steam, friends){
         var gc = this;
         
         gc.steamId = $routeParams.steamid;
@@ -80,11 +124,11 @@ angular.module('app', ['ngRoute', 'steam', 'angular-extend-promises'])
         
     })
     
-    .controller('FriendsCtrl', function($routeParams, steam, $rootScope){
+    .controller('FriendsCtrl', function($routeParams, steam, $rootScope, friends){
         var fc = this;
         
         fc.steamId = $routeParams.steamid;
-        fc.selectedFriends = [];
+        
         fc.isExpanded = false;
         
         $rootScope.$on('toggleFriends', function(){
@@ -102,19 +146,7 @@ angular.module('app', ['ngRoute', 'steam', 'angular-extend-promises'])
             });
         };
         
-        fc.selectFriend = function(f){
-            if (!f.selected) {
-                f.selected = true;
-                fc.selectedFriends.push(f);
-            } else {
-                f.selected = false;
-                var idx = fc.selectedFriends.indexOf(f);
-                if (idx >= 0) {
-                    fc.selectedFriends.splice(idx, 1);
-                }
-            }
-            console.log('SELECTED FRIENDS', fc.selectedFriends);
-        };
+        fc.selectFriend = friends.select;
         
         fc.updateFriends();
     })
