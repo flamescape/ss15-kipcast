@@ -4,20 +4,15 @@
         <div class="prompt">
             <h1 class="mainlogo">Friendly Games</h1>
             <div class="maininp" id="maininp">
-                <input type="text" placeholder="http://steamcommunity.com/profiles/76561198001860563/" ng-model="p.steamIdInput" ng-keydown="$event.keyCode==13&&p.calcSteamId()" />
+                <input type="text" placeholder="http://steamcommunity.com/id/kipke/" ng-model="p.steamIdInput" ng-keydown="$event.keyCode==13&&p.calcSteamId()" />
                 <button ng-click="p.calcSteamId()">➜</button>
             </div>
             <p class="calltoaction">Enter your Steam account ID!</p>
-            <p class="info">Struggling to pick which game to play with a group of friends? We're here to help. Friendly Games will analyze you and your friends' Steam games to let you know which support multiplayer or co-op. Need a demo? <a ng-click="p.example('http://steamcommunity.com/profiles/76561198001860563/')">Click here</a>!</p>
-            <div id="helpbox" ng-show="p.helpVisible">
-                <p>Don't have one handy? Test with one of ours!</p>
-                <ul>
-                    <li><a ng-click="p.example('STEAM_0:0:646614')">STEAM_0:0:646614</a></li>
-                    <li><a ng-click="p.example('76561197961662746')">76561197961662746</a></li>
-                    <li><a ng-click="p.example('http://steamcommunity.com/profiles/76561198001860563/')">http://steamcommunity.com/profiles/76561198001860563/</a></li>
-                    <li><a ng-click="p.example('moeancurly')">moeancurly</a></li>
-                </ul>
-            </div>
+            <p class="info">Struggling to pick which game to play with a group of friends? We're here to help. Friendly Games will analyze you and your friends' Steam games to let you know which support multiplayer or co-op. Need a demo? <a ng-click="p.example('http://steamcommunity.com/id/kipke/')">Click here</a>!</p>
+        </div>
+        <div id="vendors">
+            <a href="http://steampowered.com"><img src="/img/powered-by-steam.svg" alt="Powered by Steam" width="110" height="39"></a>
+            <a href="http://www.google.com/chrome/"><img src="/img/please-use-chrome.svg" alt="Powered by Steam" width="100" height="43"></a>
         </div>
     </div>
 

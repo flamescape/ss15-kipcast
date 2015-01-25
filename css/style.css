@@ -571,10 +571,23 @@ header nav li:hover {
         0 20px 20px rgba(0, 0, 0, .15);
 }
 
+#vendors {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    padding: 20px 20px;
+    opacity: 0.4;
+    transition: opacity 0.5s ease;
+}
+
+#vendors:hover {
+    opacity: 1;
+}
+
 .titlecard {
     width: 100%;
     color: #fcfcee;
-    margin: -20px 0 10px 0;
+    margin: 0px 0 10px 0;
     font-family:'Oswald', sans-serif;
     font-size: 1.7vw;
     letter-spacing: 0.1em;
