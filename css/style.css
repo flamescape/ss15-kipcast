@@ -6,6 +6,7 @@ body {
 
 button {
     cursor: pointer;
+    outline: none;
 }
 
 .hidden {
@@ -146,6 +147,8 @@ header input {
     background: rgba(17, 25, 35, 0.5);
     border: none;
     color: white;
+    font-size: 18px;
+    text-shadow: 2px 2px black;
 }
 
 #friends.expanded {
@@ -164,6 +167,7 @@ header input {
   flex-wrap: wrap;
   flex-grow: 1;
   overflow-y: scroll;
+  padding: 0 5px;
 }
 
 .titlecard{
@@ -378,7 +382,25 @@ header input {
         0 5px 10px rgba(0, 0, 0, .25), 
         0 10px 10px rgba(0, 0, 0, .2), 
         0 20px 20px rgba(0, 0, 0, .15);
+}
 
+.titlecard {
+    font-family:'Oswald', sans-serif;
+    font-size: 1.7vw;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-shadow:
+        0 1px 0 #777, 
+        0 2px 0 #676767, 
+        0 3px 0 #666, 
+        0 4px 0 #565656, 
+        0 6px 1px rgba(0, 0, 0, .1), 
+        0 0 5px rgba(0, 0, 0, .1), 
+        0 1px 3px rgba(0, 0, 0, .3), 
+        0 3px 5px rgba(0, 0, 0, .2), 
+        0 5px 10px rgba(0, 0, 0, .25), 
+        0 10px 10px rgba(0, 0, 0, .2), 
+        0 20px 20px rgba(0, 0, 0, .15);
 }
 
 .games .loading {
