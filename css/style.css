@@ -350,19 +350,16 @@ width: 20px;
 #friends-expand button {
     background-color: rgba(17, 25, 35, 0.5);
     height: 100px;
-    width: 25px;
+    width: 27px;
     border: none;
     color: white;
     font-size: 18px;
     text-shadow: 2px 2px black;
-    border-right: 2px solid rgba(9, 83, 111, 0);
-    transition: background-color 1s ease, border-right 1s ease;
-    
+    transition: background-color 0.3s ease, border-right 0.3s ease;
 }
 
 #friends-expand button:hover {
-    border-right: 2px solid #095470;
-    background-color: rgba(17, 25, 35, .8);    
+    background-color: #095470;
 }
 
 #friends.expanded {
