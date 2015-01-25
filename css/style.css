@@ -72,6 +72,15 @@ header input {
     padding-left: 10px;
 }
 
+#newprogress {
+    height: 10px;
+    width: calc(100% - 400px);
+    position: absolute;
+    top: 52px;
+    right: 0px;
+    background-color: red;
+}
+
 #menu {
     background: none;
     border: none;
