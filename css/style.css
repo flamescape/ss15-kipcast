@@ -89,7 +89,7 @@ header input {
 #friends-filter input {
     width: 85%;
     border-radius: 100px;
-    padding-left: 5%;
+    padding-left: 10px;
 }
 
 #friends-list {
