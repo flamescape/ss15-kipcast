@@ -701,22 +701,13 @@ header nav li:hover {
     background-color: #0A5A78;
 }
 
-#newprogress {
-    height: 10px;
-    width: calc(100% - 400px);
-    position: absolute;
-    top: 52px;
-    right: 0px;
-    background-color: red;
-}
-
 .progressbar {
         height: 10px;
     width: calc(100% - 400px);
     position: absolute;
     top: 52px;
     right: 0px;
-    background-color: rgba(17,25,35,0.5);
+    background-color: transparent;
 }
 
 .progressbar > div {    
