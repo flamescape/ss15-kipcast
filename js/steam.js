@@ -1,5 +1,5 @@
-angular.module('steam', ['yql', 'jsonp', 'firebase', 'progress'])
-.factory('steam', function($q, yql, jsonp, $firebase, progress){
+angular.module('steam', ['yql', 'jsonp', 'firebase', 'progress', 'angular-storage', 'worigin'])
+.factory('steam', function($q, yql, jsonp, $firebase, progress, store, worigin){
 
     var fb = new Firebase('https://dazzling-fire-3634.firebaseio.com/');
 
@@ -119,7 +119,7 @@ angular.module('steam', ['yql', 'jsonp', 'firebase', 'progress'])
         var ref = new Firebase('https://dazzling-fire-3634.firebaseio.com/');
         var sync = $firebase(ref.child('profiles').child(steamid));
         return sync.$asObject();
-    }
+    };
     
     steam.getGames = function(steamid){
         return progress(steam.getId64(steamid).then(function(){
@@ -135,26 +135,75 @@ angular.module('steam', ['yql', 'jsonp', 'firebase', 'progress'])
             return games;
         }));
     };
+
+    steam.getLiveGameInfo = function(appid){
+        return yql("SELECT * FROM data.html.cssselect WHERE url='http://store.steampowered.com/app/"+appid+"' AND css='#category_block .game_area_details_specs a'").then(function(data){
+            var res = data.data.query.results.results;
+            if (res) {
+                var game = {};
+                var cats = res.a;
+                cats = (cats instanceof Array?cats:[cats]).map(function(a){
+                    return a.content;
+                });
+                game.isMultiplayer = cats.indexOf('Multi-player') >= 0;
+                game.isCoop = cats.indexOf('Co-op') >= 0;
+                return game;
+            };
+            
+            // else, fall back to bigpicture API
+            return yql('select * from json where url="http://store.steampowered.com/api/appdetails/?appids='+appid+'"').then(function(res){
+                var game = {};
+                
+                var results = res.data.query.results;
+                var data = results[Object.keys(results)].data;
+                if (!data) {
+                    throw new Error('No data available for '+appid);
+                }
+                
+                var cats = data.categories;
+                if (!cats || !(cats instanceof Array)) {
+                    throw new Error('No categories available for '+appid);
+                }
+                
+                cats = cats.map(function(c){
+                    return c.description;
+                });
+                game.isMultiplayer = cats.indexOf('Multi-player') >= 0;
+                game.isCoop = cats.indexOf('Co-op') >= 0;
+                
+                return game;
+            });
+        }).catch(function(){
+            // if all else fails, presume non-multiplayer
+            return {
+                isMultiplayer: false,
+                isCoop: false
+            };
+        });
+    };
     
     steam.getGameInfo = function(appid) {
+        var storePath = ['game',appid].join('/');
+        var game = store.get(storePath);
+        if (game) {
+            return $q.when(game);
+        }
+    
         var sync = $firebase(fb.child('game').child(appid));
         var game = sync.$asObject();
         
         return progress(game.$loaded().then(function(){
             if (!game || !game.lastUpdated) {
-                return yql("SELECT * FROM data.html.cssselect WHERE url='http://store.steampowered.com/app/"+appid+"' AND css='#category_block .game_area_details_specs a'").then(function(data){
-                    var cats = data.data.query.results.results.a;
-                    if (!(cats instanceof Array)) {
-                        cats = [cats];
+                return steam.getLiveGameInfo(appid).then(function(gameData){
+                    
+                    if (!gameData) {
+                        console.log('No game data to play with for', appid);
+                        return;
                     }
-                    cats = cats.map(function(a){
-                        return a.content;
-                    });
-                    game.runLink = 'steam://rungameid/'+appid;
-                    console.log(game.runLink);
+                    
+                    game.isMultiplayer = gameData.isMultiplayer;
+                    game.isCoop = gameData.isCoop;
                     game.lastUpdated = (new Date()).getTime();
-                    game.isMultiplayer = cats.indexOf('Multi-player') >= 0;
-                    game.isCoop = cats.indexOf('Co-op') >= 0;
                     game.$save();
                     
                     return game;
@@ -162,6 +211,15 @@ angular.module('steam', ['yql', 'jsonp', 'firebase', 'progress'])
             }
             
             return game;
+        }).tap(function(game){
+            if (!game) return;
+            store.set(storePath, {
+                isCoop: game.isCoop,
+                isMultiplayer: game.isMultiplayer,
+                lastUpdated: game.lastUpdated
+            });
+        }).catch(function(err){
+            console.log((err && err.message) || err);
         }));
     };
     
