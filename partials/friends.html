@@ -12,10 +12,12 @@
                             <p class="friend-name">{{f.name}}</p>
                             <p class="friend-status"><i>{{f.online}}</i></p>
                             
-                            <p ng-if="f.gamesPromise && !f.games">Loading games... <img src="img/spinner.svg" alt="loading"></p>
+                            <p class="friend-loading" ng-if="f.gamesPromise && !f.games"><img src="img/spinner.svg" alt="loading"></p>
                         </div>
                     </div>
                 </div>
+                
+                
                 <div id="chat" class="scrollable">
                     <div id="chatwindow" class="scrollable">
                         <p>This is</p>
