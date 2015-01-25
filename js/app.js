@@ -105,7 +105,7 @@ angular.module('app', ['ngRoute', 'steam', 'angular-extend-promises', 'progress'
         
     })
     
-    .controller('ProfileCtrl', function($routeParams, steam, $rootScope){
+    .controller('ProfileCtrl', function($routeParams, steam, $rootScope, progress){
         var p = this;
         
         p.steamId = 'http://steamcommunity.com/profiles/' + $routeParams.steamid;
@@ -114,7 +114,8 @@ angular.module('app', ['ngRoute', 'steam', 'angular-extend-promises', 'progress'
             $rootScope.$emit('toggleFriends');
         };
         
-        p.progressPct = '10%';
+        progress.reset();
+        p.progressPct = '0%';
         
         $rootScope.$on('progressUpdate', function(evt, prog){
             p.progressPct = Math.round((prog.pos/prog.max) * 100) + '%';
