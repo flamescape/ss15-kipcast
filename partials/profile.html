@@ -14,7 +14,7 @@
                     <li ng-click="p.showInfoPage('credits')">Credits
                 </ul>
             </nav>
-            <div id="newprogress"></div>
+            <div class="progressbar" ng-class="{'pbDone':p.progressPct == '100%', pb:p.progressPct != '100%'}"><div ng-style="{width:p.progressPct}"></div></div>
         </header>
 
         <div id="wrapper">
