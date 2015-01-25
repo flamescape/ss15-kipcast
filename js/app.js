@@ -43,9 +43,12 @@ angular.module('app', ['ngRoute', 'steam', 'angular-extend-promises'])
         
     })
     
-    .controller('ProfileCtrl', function($routeParams, steam){
+    .controller('ProfileCtrl', function($routeParams, steam, $rootScope){
         var p = this;
         
+        p.toggleFriends = function(){
+            $rootScope.$emit('toggleFriends');
+        };
         
     })
     
@@ -78,11 +81,15 @@ angular.module('app', ['ngRoute', 'steam', 'angular-extend-promises'])
         
     })
     
-    .controller('FriendsCtrl', function($routeParams, steam){
+    .controller('FriendsCtrl', function($routeParams, steam, $rootScope){
         var fc = this;
         
         fc.steamId = $routeParams.steamid;
         fc.isExpanded = false;
+        
+        $rootScope.$on('toggleFriends', function(){
+            fc.isExpanded = !fc.isExpanded;
+        });
         
         fc.filter = '';
         
