@@ -1,5 +1,5 @@
 
-angular.module('app', ['ngRoute', 'steam', 'angular-extend-promises'])
+angular.module('app', ['ngRoute', 'steam', 'angular-extend-promises', 'progress'])
 
     .config(function($routeProvider, $compileProvider){
         $routeProvider

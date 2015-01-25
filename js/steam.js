@@ -1,4 +1,5 @@
-angular.module('steam', ['yql', 'jsonp','firebase']).factory('steam', function($q, yql, jsonp,$firebase){
+angular.module('steam', ['yql', 'jsonp', 'firebase', 'progress'])
+.factory('steam', function($q, yql, jsonp, $firebase, progress){
 
     var fb = new Firebase('https://dazzling-fire-3634.firebaseio.com/');
 
@@ -49,7 +50,7 @@ angular.module('steam', ['yql', 'jsonp','firebase']).factory('steam', function($
     steam.getFriends = function(steamid){
         var id64 = null;
         
-        return steam.getId64(steamid).then(function(steamid){
+        return progress(steam.getId64(steamid).then(function(steamid){
             id64 = steamid;
             
             return yql("SELECT * FROM data.html.cssselect WHERE url='http://steamcommunity.com/profiles/"+id64+"/friends/' AND css='.friendBlock.persona'");
@@ -93,7 +94,7 @@ angular.module('steam', ['yql', 'jsonp','firebase']).factory('steam', function($
             });
         }).catch(function(err){
             console.log('Fallback failed. Uhoh!', err);
-        });
+        }));
     };
 
     lookup = function(steamid){
@@ -103,7 +104,7 @@ angular.module('steam', ['yql', 'jsonp','firebase']).factory('steam', function($
     }
     
     steam.getGames = function(steamid){
-        return steam.getId64(steamid).then(function(){
+        return progress(steam.getId64(steamid).then(function(){
             // get cached games list if available
             return steamid;
         }).then(function(steamid){
@@ -114,14 +115,14 @@ angular.module('steam', ['yql', 'jsonp','firebase']).factory('steam', function($
                 games = [games];
             }
             return games;
-        });
+        }));
     };
     
     steam.getGameInfo = function(appid) {
         var sync = $firebase(fb.child('game').child(appid));
         var game = sync.$asObject();
         
-        return game.$loaded().then(function(){
+        return progress(game.$loaded().then(function(){
             if (!game || !game.lastUpdated) {
                 return yql("SELECT * FROM data.html.cssselect WHERE url='http://store.steampowered.com/app/"+appid+"' AND css='#category_block .game_area_details_specs a'").then(function(data){
                     var cats = data.data.query.results.results.a;
@@ -143,7 +144,7 @@ angular.module('steam', ['yql', 'jsonp','firebase']).factory('steam', function($
             }
             
             return game;
-        });
+        }));
     };
     
     return steam;
