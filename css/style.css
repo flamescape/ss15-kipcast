@@ -152,7 +152,6 @@ header input {
 #games {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
   align-content: flex-start;
   flex-wrap: wrap;
   flex-grow: 1;
@@ -165,7 +164,6 @@ header input {
 }
 
 .game {
-    flex-grow: 1;
     width: 184px;
     height: 69px;
     margin: 5px;
