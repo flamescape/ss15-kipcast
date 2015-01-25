@@ -1,11 +1,10 @@
-                <div id="friends-filter" class="maininp">
+                <div id="friends-filter" class="">
                     <input placeholder="John" type="text" ng-model="fc.filter" />
                 </div>
                 <div class="loading" ng-show="fc.loadingFriends">
                     <img src="img/spinner.svg" alt="loading">
                     <h3>Loading Friends...</h3>
                 </div>
-                <div class="wtf"></div>
                 <div id="friends-list" class="scrollable">
                     <div ng-repeat="f in fc.friends|filter:{name:fc.filter}" ng-class="{friend:1, ingame:f.isIngame, 'online':f.isOnline, 'offline':f.isOffline, selected:f.selected}" ng-click="fc.selectFriend(f)" >
                         <img src="{{f.avatar}}" width="42" height="42" class="friend-ava "/>
