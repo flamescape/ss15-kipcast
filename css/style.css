@@ -105,7 +105,6 @@ header h1 {
 
 #friends.expanded {
     min-width: 90%;
-    background-color: pink;
 }
 
 #friends.expanded .friend {
