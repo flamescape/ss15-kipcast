@@ -125,7 +125,7 @@ angular.module('app', ['ngRoute', 'steam', 'angular-extend-promises', 'progress'
         p.progressPct = '0%';
         
         $rootScope.$on('progressUpdate', function(evt, prog){
-            p.progressPct = Math.round((prog.pos/prog.max) * 100) + '%';
+            p.progressPct = (Math.round((prog.pos/prog.max) * 95) + 5) + '%';
         });
         
         steam.getProfileData(p.steamId).then(function(profile){
