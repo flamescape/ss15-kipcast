@@ -402,7 +402,11 @@ header input {
 }
 
 .friend.selected {
-    border-color: orange;
+    background-color: rgba(77, 186, 150, 0.4);
+}
+
+.friend.selected:hover {
+    background-color: rgba(171, 235, 214, 0.4);
 }
 
 .friend-text {
