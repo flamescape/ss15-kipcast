@@ -362,6 +362,10 @@ header h1 a:visited {
     background-color: rgba( 117, 204, 255, 0.2);
 }
 
+.friend.selected {
+    outline: 1px solid orange;
+}
+
 .friend-text {
     padding: 7px 0 0 0;
 }
@@ -410,12 +414,12 @@ header h1 a:visited {
 
 .scrollable::-webkit-scrollbar
 {    
-    width: 12px;
+    width: 5px;
     visibility:hidden;
 }
 .scrollable:hover::-webkit-scrollbar
 {    
-    width: 12px;     
+    width: 5px;     
     visibility:visible;
 }
 
@@ -425,7 +429,7 @@ header h1 a:visited {
    
 }
 .scrollable:hover::-webkit-scrollbar-thumb
-{    
+{
     border-radius: 10px;
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
     visibility:visible; 
