@@ -36,7 +36,7 @@ header {
     opacity: 1;
 }
 
-header h1 {
+#notchrome h2, header h1 {
     height: 62px;
     font-size: 45px;
     text-align: left;
@@ -593,8 +593,33 @@ header nav li:hover {
     position: fixed;
     top: 0;
     left: 0;
-    background-color: red;
+    background: linear-gradient(to bottom, rgba(169,3,41,1) 0%,rgba(143,2,34,1) 44%,rgba(109,0,25,1) 100%);
     z-index: 99;
+}
+
+#notchrome h2 {
+    text-align: center;
+}
+
+#notchrome p {
+    width: 100%;
+    color: #fcfcee;
+    margin: 0px 0 10px 0;
+    font-family:'Oswald', sans-serif;
+    font-size: 1.7vw;
+    text-align: center;
+    text-shadow:
+        0 1px 0 #777, 
+        0 2px 0 #676767, 
+        0 3px 0 #666, 
+        0 4px 0 #565656, 
+        0 6px 1px rgba(0, 0, 0, .1), 
+        0 0 5px rgba(0, 0, 0, .1), 
+        0 1px 3px rgba(0, 0, 0, .3), 
+        0 3px 5px rgba(0, 0, 0, .2), 
+        0 5px 10px rgba(0, 0, 0, .25), 
+        0 10px 10px rgba(0, 0, 0, .2), 
+        0 20px 20px rgba(0, 0, 0, .15);
 }
 
 .titlecard {
