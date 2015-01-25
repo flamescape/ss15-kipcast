@@ -1,8 +1,7 @@
     <div id="main">
         <header>
             <h1><a href="http://ss15-kipcast.divshot.io">Friendly Games</a></h1>
-            <input type="text" />
-            <p>X</p>
+            <input type="text" placeholder="http://steamcommunity.com/id/kipke/" ng-value="{{p.steamId}}"/>
         </header>
         <div id="wrapper">
             <div id="friends" class="scrollable" ng-class="{expanded: fc.isExpanded}" ng-controller="FriendsCtrl as fc" ng-include="'partials/friends.html'"></div>

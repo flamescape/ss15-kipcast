@@ -55,6 +55,12 @@ header h1 a:visited {
     color: #fcfcee;
 }
 
+header input {
+    border-radius: 100px;
+    width: 30%;
+    padding-left: 10px;
+}
+
 #wrapper {
   flex: 2;
   display: flex;
