@@ -90,6 +90,8 @@ angular.module('app', ['ngRoute', 'steam', 'angular-extend-promises'])
     .controller('ProfileCtrl', function($routeParams, steam, $rootScope){
         var p = this;
         
+        p.steamId = $routeParams.steamid;
+        
         p.toggleFriends = function(){
             $rootScope.$emit('toggleFriends');
         };
