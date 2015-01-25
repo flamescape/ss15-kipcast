@@ -386,7 +386,7 @@ header nav li:hover {
 .maininp input {
     flex: 9;
     height: 15px;
-    padding: 10px;
+    padding: 5px;
     border: solid 1px #fff;
     box-shadow: inset 1px 1px 2px 0 #707070;
     border-radius: 10px 0 0 10px;
@@ -400,7 +400,7 @@ header nav li:hover {
     background-color: #002f4b;
     opacity: 0.75;
     color: #f0efd2;
-    font-size: 2vw;
+    font-size: 1.8vw;
     line-height: 15px;
 }
 
