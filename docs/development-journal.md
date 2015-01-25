@@ -57,3 +57,6 @@ Björn showed Gareth a cat gif, Gareth was overjoyed and needed some 'alone time
 
 ### 0:54:05
 Gareth is distracted researching ninja turtles, all other team members sigh...
+
+### 19:36:23
+The team notices that the development log has been neglected for a while. It could not be determined who was in charge of updating the log, awkward silence commences.
