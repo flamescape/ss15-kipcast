@@ -28,9 +28,20 @@ angular.module('steam', ['yql', 'jsonp', 'firebase', 'progress', 'angular-storag
             
             return yql("select * from xml where url='http://steamcommunity.com/profiles/"+steamid+"/?xml=1'").then(function(data){
                 var profile = data.data.query.results.profile;
+                
+                if (!profile.steamID64) {
+                    profile.error = "Sorry, Steam profile \""+steamid+"\" not found";
+                } else if (profile.privacyMessage && profile.privacyMessage.content) {
+                    profile.error = profile.privacyMessage.content;
+                } else if (profile.privacyState && profile.privacyState == "private") {
+                    profile.error = "Sorry, this profile is private";
+                }
+                
                 profileCache[steamid] = profile;
                 return profile;
             });
+        }).catch(function(){
+            return {error: "Sorry, Steam profile \""+steamid+"\" not found"};
         }));
     };
     
@@ -133,6 +144,8 @@ angular.module('steam', ['yql', 'jsonp', 'firebase', 'progress', 'angular-storag
                 games = [games];
             }
             return games;
+        }).catch(function(){
+            return {error: "Could not retreive games list. Profile is private or unavailable"};
         }));
     };
 
