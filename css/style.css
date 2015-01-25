@@ -97,6 +97,12 @@ header input {
     margin-top: 30px;
 }
 
+.expanded #friends-list {
+    display: flex;
+    flex: 1;
+    flex-wrap: wrap;
+}
+
 .friend {
     margin-bottom: 8px;
     margin: 0 8px 8px 0;
@@ -141,12 +147,12 @@ header input {
 }
 
 #friends.expanded {
-    min-width: 90%;
+    min-width: 85%;
+    max-width: 85%;
 }
 
 #friends.expanded .friend {
-    width: 300px;
-    flex: 1;
+    width: 380px;
 }
 
 #games {
