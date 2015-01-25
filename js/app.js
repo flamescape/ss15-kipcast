@@ -172,6 +172,7 @@ angular.module('app', ['ngRoute', 'steam', 'angular-extend-promises', 'progress'
         };
 
         p.getNames = function(){
+            if (!p.profile) return 'My';
             var names = friends.getSelectedFriends().map(function(f){
                 return f.name;
             });
@@ -180,8 +181,10 @@ angular.module('app', ['ngRoute', 'steam', 'angular-extend-promises', 'progress'
             var t = names.reduce(function(str, name, idx){
                 return str += (idx == names.length-1) ? (name + ' & ' ) : (name + ', ')
             }, '');
-            return t + lastName;
+            return t + lastName + "'s";
         };
+        
+        p.getNumFriendsSelected = friends.getNumFriendsSelected;
         
     })
     
