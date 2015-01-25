@@ -132,6 +132,14 @@ header input {
   flex-direction: column;
 }
 
+#friends-expand button {
+    height: 100px;
+    width: 25px;
+    background: rgba(17, 25, 35, 0.5);
+    border: none;
+    color: white;
+}
+
 #friends.expanded {
     min-width: 90%;
 }
