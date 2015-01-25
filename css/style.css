@@ -819,13 +819,16 @@ background-color: #2D6531;
 }
 
 .error {
-    background: red;
+    background: linear-gradient(to bottom, rgba(169,3,41,1) 0%,rgba(143,2,34,1) 44%,rgba(109,0,25,1) 100%);
     padding: 10px;
     font-family: 'Oswald', sans-serif;
     font-size: 20px;
     color: #FCFCEE;
+    text-shadow: 1px 1px 1px black;
     width: 73%;
     margin: 20px auto;
+    border-radius: 16px;
+    box-shadow: 1px 1px 16px 0px black;
 }
 
 /*

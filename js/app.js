@@ -97,7 +97,7 @@ angular.module('app', ['ngRoute', 'steam', 'angular-extend-promises', 'progress'
             p.errors.push(err);
             $timeout(function(){
                 p.errors.shift();
-            }, 3000);
+            }, 6000);
         };
         
         p.calcSteamId = function($event){
