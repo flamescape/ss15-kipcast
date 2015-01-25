@@ -2,21 +2,18 @@
         <img src="img/spinner.svg" alt="loading">
         <h3>Loading Games...</h3>
     </div>
+    <h1 class="titlecard">Multiplayer</h1>
     <div ng-repeat="g in gc.games|filter:gc.isGameOwnedByAllFriends | filter:{ info: {isMultiplayer: true} }" class="game" ng-style="{opacity:g.info.isMultiplayer?1:0.15}">
+        
         <img src="{{g.logo}}" width="184" height="69" class="game" alt="{{g.name}} logo" ng-attr-title="{{g.name}}"/>
         
         <div style="position:relative;top:-70px;left:0;z-index:9999;background:rgba(255,255,255,0.7);margin:0;padding:0;">
             
         </div>
     </div>
-    <div ng-repeat="g in gc.games|filter:gc.isGameOwnedByAllFriends | filter:{ info: {isMultiplayer: true} }" class="game" ng-style="{opacity:g.info.isMultiplayer?1:0.15}">
-        <img src="{{g.logo}}" width="184" height="69" class="game" alt="{{g.name}} logo" ng-attr-title="{{g.name}}"/>
-        
-        <div style="position:relative;top:-70px;left:0;z-index:9999;background:rgba(255,255,255,0.7);margin:0;padding:0;">
-            
-        </div>
-    </div>
+    <h1 class="titlecard">Not Multiplayer</h1>
     <div ng-repeat="g in gc.games|filter:gc.isGameOwnedByAllFriends | filter:{ info: {isMultiplayer: false} }" class="game" ng-style="{opacity:g.info.isMultiplayer?1:0.15}">
+        
         <img src="{{g.logo}}" width="184" height="69" class="game" alt="{{g.name}} logo" ng-attr-title="{{g.name}}"/>
         
         <div style="position:relative;top:-70px;left:0;z-index:9999;background:rgba(255,255,255,0.7);margin:0;padding:0;">
