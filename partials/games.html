@@ -2,12 +2,16 @@
         <img src="img/spinner.svg" alt="loading">
         <h3>Loading Games...</h3>
     </div>
-    <h1 class="titlecard">Multiplayer</h1>
+    
+    <h1><img ng-src="{{p.profile.avatarMedium}}" /> {{p.profile.steamID}}'s Games</h1>
+    
+    <h1 class="titlecard">Multiplayer / Co-op</h1>
     <a ng-repeat="g in gc.games|filter:gc.isGameOwnedByAllFriends | isSingleplayerGame:1" href="steam://rungameid/{{g.appID}}" class="game" ng-style="{opacity:g.info.isMultiplayer?1:0.15}">        
         <img src="{{g.logo}}" width="184" height="69" class="game" alt="{{g.name}} logo" ng-attr-title="{{g.name}}"/>        
         <div style="position:relative;top:-70px;left:0;z-index:9999;background:rgba(255,255,255,0.7);margin:0;padding:0;">            
         </div>
     </a>
+    
     <h1 class="titlecard">Not Multiplayer</h1>
     <a ng-repeat="g in gc.games|filter:gc.isGameOwnedByAllFriends | isSingleplayerGame" href="steam://rungameid/{{g.appID}}" class="game" ng-style="{opacity:g.info.isMultiplayer?1:0.15}">        
         <img src="{{g.logo}}" width="184" height="69" class="game" alt="{{g.name}} logo" ng-attr-title="{{g.name}}"/>        
@@ -15,3 +19,4 @@
             
         </div>
     </a>
+    

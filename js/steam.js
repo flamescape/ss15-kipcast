@@ -6,14 +6,32 @@ angular.module('steam', ['yql', 'jsonp', 'firebase', 'progress'])
     var steam = {};
     
     var vanityCache = {};
+    var profileCache = {};
     
     steam.vanityToId64 = function(name){
         if (vanityCache[name]) {
             return vanityCache[name];
         }
         return yql("select * from xml where url='http://steamcommunity.com/id/"+name+"/?xml=1'").then(function(data){
-            return (vanityCache[name] = data.data.query.results.profile.steamID64);
+            var profile = data.data.query.results.profile;
+            profileCache[profile.steamID64] = profile;
+            vanityCache[name] = profile.steamID64;
+            return profile.steamID64;
         });
+    };
+    
+    steam.getProfileData = function(steamid){
+        return progress(steam.getId64(steamid).then(function(steamid){
+            if (profileCache[steamid]) {
+                return profileCache[steamid];
+            }
+            
+            return yql("select * from xml where url='http://steamcommunity.com/profiles/"+steamid+"/?xml=1'").then(function(data){
+                var profile = data.data.query.results.profile;
+                profileCache[steamid] = profile;
+                return profile;
+            });
+        }));
     };
     
     steam.getId64 = function(steamid){

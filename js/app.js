@@ -121,6 +121,14 @@ angular.module('app', ['ngRoute', 'steam', 'angular-extend-promises', 'progress'
             p.progressPct = Math.round((prog.pos/prog.max) * 100) + '%';
         });
         
+        steam.getProfileData(p.steamId).then(function(profile){
+            p.profile = profile;
+            if (profile.customURL) {
+                p.steamId = 'http://steamcommunity.com/id/'+profile.customURL;
+            }
+            console.log('MY PROFILE', profile);
+        });
+        
     })
     
     .controller('GamesCtrl', function($routeParams, $q, steam, friends){
