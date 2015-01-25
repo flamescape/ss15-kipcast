@@ -223,8 +223,7 @@ header nav li:hover {
 
 #friends-filter input {
     width: 85%;
-    border-radius: 100px;
-    padding-left: 10px;
+    border-radius: 10px 10px 10px 10px;
 }
 
 #friends-list {
@@ -692,9 +691,21 @@ header nav li:hover {
     background-color: #0A5A78;
 }
 
-.progressbar {
+#newprogress {
     height: 10px;
-    width: 100%;
+    width: calc(100% - 400px);
+    position: absolute;
+    top: 52px;
+    right: 0px;
+    background-color: red;
+}
+
+.progressbar {
+        height: 10px;
+    width: calc(100% - 400px);
+    position: absolute;
+    top: 52px;
+    right: 0px;
     background-color: rgba(17,25,35,0.5);
 }
 
