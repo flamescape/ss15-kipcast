@@ -1,6 +1,0 @@
-{
-  "name": "ss15-kipcast",
-  "root": "./",
-  "clean_urls": true,
-  "error_page": "error.html"
-}
