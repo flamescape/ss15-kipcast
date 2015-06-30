@@ -1,34 +1,32 @@
 
-angular.module('app', ['ngRoute', 'steam', 'angular-extend-promises', 'progress'])
+angular.module('app', ['ngRoute', 'progress', 'restangular'])
 
-    .config(function($routeProvider, $compileProvider){
+    .config(function($routeProvider, $compileProvider, $locationProvider, RestangularProvider){
         $routeProvider
-            .when('/', {
-                templateUrl: 'partials/prompt.html',
-                controller: 'PromptCtrl as p'
-            })
-            .when('/id/:steamid', {
-                templateUrl: 'partials/profile.html',
-                controller: 'ProfileCtrl as p'
-            })
+            .when('/', {templateUrl: 'partials/prompt.html', controller: 'PromptCtrl as p'})
+            .when('/id/:steamid', {templateUrl: 'partials/profile.html', controller: 'ProfileCtrl as p'})
             .otherwise('/')
         ;
         
         $compileProvider.aHrefSanitizationWhitelist(/./);
+
+        $locationProvider.html5Mode(true);
+
+        RestangularProvider.setBaseUrl('x');
     })
 
     .filter('isSingleplayerGame', function(){
         return function(games, inverse){
             return !!games && games.filter(function(game){
-                if (!game || !game.info) return false;
+                if (!game) return false;
                 
-                var res = !game.info.isMultiplayer && !game.info.isCoop;
+                var res = !game.isMultiplayer && !game.isCoop;
                 return inverse ? !res : res;
             });
         };
     })
     
-    .factory('friends', function(steam){
+    .factory('friends', function(Restangular){
         var sv = {};
         
         var selectedFriends = [];
@@ -48,9 +46,7 @@ angular.module('app', ['ngRoute', 'steam', 'angular-extend-promises', 'progress'
                 selectedFriends.push(f);
                 if (!f.gamesPromise) {
                     // fetch games belonging to friend (f)
-                    f.gamesPromise = steam.getId64(f.profileUrl).then(function(steamid){
-                        return steam.getGames(steamid);
-                    }).then(function(games){
+                    f.gamesPromise = Restangular.one('user', f.steamid).all('games').getList().then(function(games){
                         if (!games || games.error) {
                             f.gamesPromise = null;
                             f.gamesError = (games && games.error) || "Could not retreive games list. Profile is private or unavailable";
@@ -75,7 +71,7 @@ angular.module('app', ['ngRoute', 'steam', 'angular-extend-promises', 'progress'
         sv.getSelectedFriendsWithGame = function(appid){
             return selectedFriends.filter(function(sf){
                 return !sf.games || !!sf.games.some(function(g){
-                    return g.appID === appid;
+                    return g.appid === appid;
                 });
             });
         };
@@ -96,7 +92,7 @@ angular.module('app', ['ngRoute', 'steam', 'angular-extend-promises', 'progress'
         return sv;
     })
 
-    .controller('PromptCtrl', function(steam, $location, $timeout){
+    .controller('PromptCtrl', function($location, $timeout, Restangular){
         var p = this;
         
         p.helpVisible = false;
@@ -112,13 +108,11 @@ angular.module('app', ['ngRoute', 'steam', 'angular-extend-promises', 'progress'
         };
         
         p.calcSteamId = function($event){
-            steam.getProfileData(p.steamIdInput).then(function(profile){
-                if (!!profile.error) {
-                    return p.addError(profile.error);
-                }
-                
-                p.steamId = profile.steamID64;
-                $location.path('/id/'+profile.steamID64);
+            Restangular.one('lookup').get({id: p.steamIdInput}).then(function(id){
+                p.steamId = id;
+                $location.path('/id/'+id);
+            }).catch(function(err){
+                return p.addError(err);
             });
         };
         
@@ -137,7 +131,7 @@ angular.module('app', ['ngRoute', 'steam', 'angular-extend-promises', 'progress'
         
     })
     
-    .controller('ProfileCtrl', function($routeParams, steam, $rootScope, progress, $location, friends){
+    .controller('ProfileCtrl', function($routeParams, $rootScope, progress, $location, friends, Restangular){
         var p = this;
         
         p.steamId = 'http://steamcommunity.com/profiles/' + $routeParams.steamid;
@@ -151,10 +145,10 @@ angular.module('app', ['ngRoute', 'steam', 'angular-extend-promises', 'progress'
             p.progressPct = (Math.round((prog.pos/prog.max) * 95) + 5) + '%';
         });
         
-        steam.getProfileData(p.steamId).then(function(profile){
+        Restangular.one('user', p.steamId).get().then(function(profile){
             p.profile = profile;
-            if (profile.customURL) {
-                p.steamId = 'http://steamcommunity.com/id/'+profile.customURL;
+            if (profile.profileurl) {
+                p.steamId = profile.profileurl;
             }
             console.log('MY PROFILE', profile);
         });
@@ -166,7 +160,7 @@ angular.module('app', ['ngRoute', 'steam', 'angular-extend-promises', 'progress'
         };
         
         p.switchProfile = function(steamid){
-            return steam.getId64(steamid).then(function(steamid){
+            return Restangular.one('lookup').get({id: steamid}).then(function(steamid){
                 $location.path("/id/"+steamid);
             });
         };
@@ -176,9 +170,9 @@ angular.module('app', ['ngRoute', 'steam', 'angular-extend-promises', 'progress'
             var names = friends.getSelectedFriends().filter(function(f){
                 return !!f.games;
             }).map(function(f){
-                return f.name;
+                return f.personaname;
             });
-            names.unshift(p.profile.steamID);
+            names.unshift(p.profile.personaname);
             var lastName = names.pop();
             var t = names.reduce(function(str, name, idx){
                 return str += (idx == names.length-1) ? (name + ' & ' ) : (name + ', ')
@@ -190,14 +184,15 @@ angular.module('app', ['ngRoute', 'steam', 'angular-extend-promises', 'progress'
         
     })
     
-    .controller('GamesCtrl', function($routeParams, $q, steam, friends){
+    .controller('GamesCtrl', function($routeParams, $q, friends, Restangular){
         var gc = this;
         
         gc.steamId = $routeParams.steamid;
         
         gc.updateGames = function() {
             gc.loadingGames = true;
-            return steam.getGames(gc.steamId).then(function(games){
+            return Restangular.one('user', gc.steamId).all('games').getList().then(function(games){
+                console.log('MY GAMES', games);
                 return (gc.games = games);
             }).finally(function(){
                 gc.loadingGames = false;
@@ -206,22 +201,22 @@ angular.module('app', ['ngRoute', 'steam', 'angular-extend-promises', 'progress'
 
         gc.fetchGameInfo = function(games){
             // fetching categories
-            $q.when(games).map(function(game){
-                return steam.getGameInfo(game.appID).then(function(info){
-                    game.info = info;
-                });
-            }, {concurrency:6});
+            // $q.when(games).map(function(game){
+            //     return Restangular.one('games', game.appID).get().then(function(info){
+            //         game.info = info;
+            //     });
+            // }, {concurrency:6});
         };
         
         gc.isGameOwnedByAllFriends = function(g){
-            return friends.getSelectedFriendsWithGame(g.appID).length === friends.getNumFriendsSelected();
+            return friends.getSelectedFriendsWithGame(g.appid).length === friends.getNumFriendsSelected();
         };
         
         gc.updateGames().then(gc.fetchGameInfo);
         
     })
     
-    .controller('FriendsCtrl', function($routeParams, steam, $rootScope, friends){
+    .controller('FriendsCtrl', function($routeParams, $rootScope, friends, Restangular){
         var fc = this;
         
         fc.steamId = $routeParams.steamid;
@@ -236,7 +231,7 @@ angular.module('app', ['ngRoute', 'steam', 'angular-extend-promises', 'progress'
         
         fc.updateFriends = function() {
             fc.loadingFriends = true;
-            steam.getFriends(fc.steamId).then(function(friends){
+            Restangular.one('user', fc.steamId).all('friends').getList().then(function(friends){
                 fc.friends = friends;
             }).finally(function(){
                 fc.loadingFriends = false;

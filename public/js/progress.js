@@ -1,4 +1,4 @@
-angular.module('progress', ['angular-extend-promises'])
+angular.module('progress', [])
 
     .factory('progress', function($q, $rootScope){
         var promises = [];

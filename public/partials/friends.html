@@ -8,10 +8,10 @@
                     <h3>Loading Friends...</h3>
                 </div>
                 <div id="friends-list" class="scrollable">
-                    <div ng-repeat="f in fc.friends|filter:{name:fc.filter}" ng-class="{friend:1, ingame:f.isIngame, 'online':f.isOnline, 'offline':f.isOffline, selected:f.selected}" ng-click="fc.selectFriend(f)" >
+                    <div ng-repeat="f in fc.friends|filter:{personaname:fc.filter}" ng-class="{friend:1, ingame:f.isIngame, 'online':f.isOnline, 'offline':f.isOffline, selected:f.selected}" ng-click="fc.selectFriend(f)" >
                         <img src="{{f.avatar}}" width="42" height="42" class="friend-ava "/>
                         <div class="friend-text">
-                            <p class="friend-name">{{f.name}}</p>
+                            <p class="friend-name">{{f.personaname}}</p>
                             <p class="friend-status"><i>{{f.online}}</i></p>
                             
                             <p class="friend-gameserror" ng-if="f.gamesError" title="This profile may be private or possibly Steam is temporarily unavailable."></p>
