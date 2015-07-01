@@ -188,8 +188,16 @@ header nav li:hover {
     margin: 0 10px;
 }
 
-#information a:visited {
-    color: #fcfcee;
+#information a, #information a:visited {
+    color: #f9f8d7;
+}
+
+#information a {
+    transition: color, 0.3s, ease;
+}
+
+#information a:hover {
+    color: #f9f9f9;
 }
 
 #information table {
