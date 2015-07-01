@@ -257,7 +257,7 @@ header nav li:hover {
 
 #clearfilter {
     position: absolute;
-    right: 61px;
+    left: 306px;
     top: 12px;
     background: none;
     border: none;
@@ -267,7 +267,7 @@ header nav li:hover {
 
 #deselect {
 position: absolute;
-    right: 25px;
+    left: 345px;
     top: 8px;
     background: none;
     border: none;
