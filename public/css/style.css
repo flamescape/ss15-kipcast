@@ -253,7 +253,6 @@ header nav li:hover {
     max-width: 400px;
     background-color: rgba(17, 25, 35, 0.5);
     transition: max-width 0.5s ease, min-width 0.5s ease;
-    -webkit-transition: max-width 0.5s ease, min-width 0.5s ease;
 }
 
 #friends-filter {
@@ -873,7 +872,7 @@ width: 20px;
 }
 
 .progressbar {
-        height: 10px;
+    height: 10px;
     width: calc(100% - 400px);
     position: absolute;
     top: 52px;
@@ -886,7 +885,6 @@ width: 20px;
     width: 0;
     margin: auto;
     transition: background-color 2s ease, width 0.5s ease;
-    -webkit-transition: background-color 2s ease, width 0.5s ease;
 }
 .pb > div{
 background-color: #2D6531;
