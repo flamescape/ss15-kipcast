@@ -270,6 +270,7 @@ header nav li:hover {
     border: none;
     font-size: 1.3em;
     opacity: 0.6;
+	line-height: 1.15em;
 }
 
 #deselect {
