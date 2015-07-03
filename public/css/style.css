@@ -651,11 +651,17 @@ width: 20px;
         0 20px 20px rgba(0, 0, 0, .15);
 }
 
-#vendors {
-    position: fixed;
-    bottom: 0;
-    right: 0;
-    padding: 20px 20px;
+#vendor-chrome, #vendor-steam {
+	position: fixed;
+	bottom: 20px;
+}
+
+#vendor-chrome {
+	right: 20px;
+}
+
+#vendor-steam {
+	right: 170px;
 }
 
 #vendors img {
