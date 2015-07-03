@@ -1,0 +1,7 @@
+{
+    "name"                  : "friendlygames",
+    "script"                : "app.js",
+    "max_memory_restart"    : "500M",
+    "error_file"            : "err.log",
+    "out_file"              : "out.log"
+}
