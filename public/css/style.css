@@ -242,6 +242,7 @@ header nav li:hover {
 #wrapper {
   flex: 2;
   display: flex;
+  overflow-y: hidden;
 }
 
 #friends {
