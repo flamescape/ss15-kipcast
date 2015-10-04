@@ -134,7 +134,7 @@ angular.module('app', ['ngRoute', 'progress', 'restangular'])
     .controller('ProfileCtrl', function($routeParams, $rootScope, progress, $location, friends, Restangular){
         var p = this;
         
-        p.steamId = 'http://steamcommunity.com/profiles/' + $routeParams.steamid;
+        p.steamId = $routeParams.steamid;
         
         p.friends = friends;
         
