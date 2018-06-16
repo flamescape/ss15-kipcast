@@ -1,5 +1,5 @@
 node_modules/
 gameinfo/*.json
 config.js
-err-0.log
-out-0.log
+*.log
+pm2.json
